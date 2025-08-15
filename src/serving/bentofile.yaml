@@ -1,0 +1,7 @@
+service: service.py:service
+include:
+- service.py
+python:
+  packages:
+  - bentoml==1.4.19
+  - pydantic==2.11.7

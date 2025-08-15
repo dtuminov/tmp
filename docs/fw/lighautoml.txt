@@ -1,0 +1,1472 @@
+========================
+CODE SNIPPETS
+========================
+TITLE: Install LightAutoML via pip
+DESCRIPTION: Installs the LightAutoML library from PyPI using the pip package manager. This is the recommended method for basic usage and quick setup.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/docs/pages/Installation.rst#_snippet_0
+
+LANGUAGE: bash
+CODE:
+```
+pip install lightautoml
+```
+
+----------------------------------------
+
+TITLE: Install LightAutoML for development with Poetry
+DESCRIPTION: Sets up a development environment for LightAutoML by cloning the repository and using Poetry. This process includes configuring a virtual environment, managing dependencies, and performing the installation.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/docs/pages/Installation.rst#_snippet_1
+
+LANGUAGE: bash
+CODE:
+```
+git clone git@github.com:AILab-MLTools/LightAutoML.git
+cd LightAutoML
+
+# Create virtual environment inside your project directory
+poetry config virtualenvs.in-project true
+
+# If you want to update dependencies, run the command:
+poetry lock
+
+# Installation
+poetry install
+```
+
+----------------------------------------
+
+TITLE: Install LightAutoML with all dependencies
+DESCRIPTION: This snippet provides the command to install the LightAutoML library along with all its optional dependencies using pip.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_9_neural_networks.ipynb#_snippet_0
+
+LANGUAGE: python
+CODE:
+```
+# !pip install -U lightautoml[all]
+```
+
+----------------------------------------
+
+TITLE: Install LightAutoML Base Functionality
+DESCRIPTION: Installs the core LightAutoML framework from PyPI, providing essential functionalities for machine learning tasks.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/README.md#_snippet_1
+
+LANGUAGE: bash
+CODE:
+```
+pip install -U lightautoml
+```
+
+----------------------------------------
+
+TITLE: Install LightAutoML Library
+DESCRIPTION: Installs or updates the LightAutoML library using pip. This step is crucial for environments where the repository is not directly cloned, such as Google Colab or Kaggle notebooks.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_3_sql_data_source.ipynb#_snippet_0
+
+LANGUAGE: Python
+CODE:
+```
+#! pip install -U lightautoml
+```
+
+----------------------------------------
+
+TITLE: Define Dataset Path and URL
+DESCRIPTION: Specifies the directory, filename, and URL for the example dataset. This setup is used to manage where the dataset will be stored locally and from where it will be downloaded if not already present.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_6_custom_pipeline.ipynb#_snippet_4
+
+LANGUAGE: python
+CODE:
+```
+DATASET_DIR = '../data/'
+DATASET_NAME = 'sampled_app_train.csv'
+DATASET_FULLNAME = os.path.join(DATASET_DIR, DATASET_NAME)
+DATASET_URL = 'https://raw.githubusercontent.com/AILab-MLTools/LightAutoML/master/examples/data/sampled_app_train.csv'
+```
+
+----------------------------------------
+
+TITLE: Install LightAutoML Library
+DESCRIPTION: This snippet provides the command to install or upgrade the LightAutoML library using pip. It ensures that the necessary machine learning framework is available in the environment.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_10_relational_data_with_star_scheme.ipynb#_snippet_0
+
+LANGUAGE: Python
+CODE:
+```
+#! pip install -U lightautoml
+```
+
+----------------------------------------
+
+TITLE: Define Dataset Paths and URL
+DESCRIPTION: Specifies the local directory, filename, full path, and the remote URL for the example dataset. These definitions are used to manage and load the data into the LightAutoML workflow.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_3_sql_data_source.ipynb#_snippet_4
+
+LANGUAGE: Python
+CODE:
+```
+DATASET_DIR = '../data/'
+DATASET_NAME = 'sampled_app_train.csv'
+DATASET_FULLNAME = os.path.join(DATASET_DIR, DATASET_NAME)
+DATASET_URL = 'https://raw.githubusercontent.com/AILab-MLTools/LightAutoML/master/examples/data/sampled_app_train.csv'
+```
+
+----------------------------------------
+
+TITLE: Install LightAutoML Library
+DESCRIPTION: Installs or upgrades the LightAutoML library using pip. This step is crucial to ensure all necessary dependencies and the core library are available for running the uplift modeling tutorial.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_5_uplift.ipynb#_snippet_1
+
+LANGUAGE: python
+CODE:
+```
+#! pip install -U lightautoml
+```
+
+----------------------------------------
+
+TITLE: Install LightAutoML Library
+DESCRIPTION: Installs the LightAutoML library using pip. This step is necessary to set up the environment for building custom machine learning pipelines, especially in environments like Colab or Kaggle where the repository might not be cloned.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_6_custom_pipeline.ipynb#_snippet_0
+
+LANGUAGE: python
+CODE:
+```
+#! pip install -U lightautoml
+```
+
+----------------------------------------
+
+TITLE: Download Example Dataset if Not Exists
+DESCRIPTION: Checks if the dataset file already exists locally. If not, it creates the necessary directory and downloads the dataset from the specified URL, saving it to the local file system for subsequent use.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_5_uplift.ipynb#_snippet_6
+
+LANGUAGE: python
+CODE:
+```
+if not os.path.exists(DATASET_FULLNAME):
+    os.makedirs(DATASET_DIR, exist_ok=True)
+
+    dataset = requests.get(DATASET_URL).text
+    with open(DATASET_FULLNAME, 'w') as output:
+        output.write(dataset)
+```
+
+----------------------------------------
+
+TITLE: Define Dataset Paths and URL
+DESCRIPTION: Specifies the local directory, filename, and remote URL for the example dataset. These variables are used to manage the location and retrieval of the training data, allowing for local storage or download.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_5_uplift.ipynb#_snippet_5
+
+LANGUAGE: python
+CODE:
+```
+DATASET_DIR = '../data/'
+DATASET_NAME = 'sampled_app_train.csv'
+DATASET_FULLNAME = os.path.join(DATASET_DIR, DATASET_NAME)
+DATASET_URL = 'https://raw.githubusercontent.com/AILab-MLTools/LightAutoML/master/example_data/test_data_files/sampled_app_train.csv'
+```
+
+----------------------------------------
+
+TITLE: Install LightAutoML with Specific Extra Dependencies
+DESCRIPTION: Installs LightAutoML along with optional extra dependencies, such as NLP or all available dependencies. This allows users to include specialized functionalities and specify a particular version of the framework.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/README.md#_snippet_2
+
+LANGUAGE: bash
+CODE:
+```
+pip install -U lightautoml[nlp]
+pip install 'lightautoml[all]==0.4.0'
+```
+
+----------------------------------------
+
+TITLE: Initialize LightAutoML Task for Binary Classification
+DESCRIPTION: Creates a `Task` object for LightAutoML, explicitly defining 'binary' as the problem type. This task definition guides the AutoML process in selecting appropriate models and metrics tailored for binary classification problems.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_3_sql_data_source.ipynb#_snippet_12
+
+LANGUAGE: Python
+CODE:
+```
+%%time
+
+task = Task('binary', )
+```
+
+----------------------------------------
+
+TITLE: Initialize LightAutoML Task and Reader
+DESCRIPTION: Creates a LightAutoML `Task` object for binary classification and a `PandasToPandasReader`. The task defines the problem type, while the reader handles data loading and preprocessing, including cross-validation setup, for LightAutoML pipelines.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_6_custom_pipeline.ipynb#_snippet_10
+
+LANGUAGE: python
+CODE:
+```
+%%time
+
+task = Task('binary')
+reader = PandasToPandasReader(task, cv=N_FOLDS, random_state=RANDOM_STATE)
+```
+
+----------------------------------------
+
+TITLE: Configure TabularAutoML for Tuning NODE Models
+DESCRIPTION: This code initializes `TabularAutoML` specifically for tuning NODE models. It sets `use_algos` to `["node_tuned"]` and incorporates the `my_opt_space_NODE` function into `nn_params` for custom optimization. Additionally, it configures `nn_pipeline_params` for quantization and target encoding, demonstrating a comprehensive setup for NODE model training and tuning.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_9_neural_networks.ipynb#_snippet_30
+
+LANGUAGE: python
+CODE:
+```
+automl = TabularAutoML(
+    task = task, 
+    timeout = TIMEOUT,
+    cpu_limit = N_THREADS,
+    general_params = {"use_algos": [["node_tuned"]]}, # ['nn', 'mlp', 'dense', 'denselight', 'resnet', 'snn'] or custom torch model
+    nn_params = {"n_epochs": 10, "bs": 512, "num_workers": 0, "path_to_save": None, "freeze_defaults": True, "optimization_search_space": my_opt_space_NODE,},
+    nn_pipeline_params = {"use_qnt": True, "use_te": False},
+    reader_params = {'n_jobs': N_THREADS, 'cv': N_FOLDS, 'random_state': RANDOM_STATE}
+)
+```
+
+----------------------------------------
+
+TITLE: Import Necessary Libraries for Uplift Modeling
+DESCRIPTION: Imports standard Python libraries, installed third-party libraries like numpy, pandas, matplotlib, sklearn, and torch, along with specific modules from the LightAutoML package for tabular AutoML, dataset roles, tasks, uplift modeling, metrics, and reporting.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_5_uplift.ipynb#_snippet_2
+
+LANGUAGE: python
+CODE:
+```
+# Standard python libraries
+from copy import deepcopy
+import os
+import requests
+
+# Installed libraries
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.metrics import roc_auc_score
+from sklearn.model_selection import train_test_split
+import torch
+
+# Imports from our package
+from lightautoml.automl.presets.tabular_presets import TabularAutoML
+from lightautoml.dataset.roles import DatetimeRole
+from lightautoml.tasks import Task
+
+from lightautoml.addons.uplift.base import AutoUplift, BaseLearnerWrapper, MetaLearnerWrapper
+from lightautoml.addons.uplift import metalearners
+from lightautoml.addons.uplift.metrics import (_available_uplift_modes,
+                                               TUpliftMetric,
+                                               calculate_graphic_uplift_curve,
+                                               calculate_min_max_uplift_auc,
+                                               calculate_uplift_at_top,
+                                               calculate_uplift_auc,
+                                               perfect_uplift_curve)
+from lightautoml.addons.uplift.utils import create_linear_automl
+from lightautoml.report.report_deco import ReportDecoUplift
+
+
+%matplotlib inline
+```
+
+----------------------------------------
+
+TITLE: Prepare Data for AB Test Group Assignment
+DESCRIPTION: This snippet prepares the generated dataset for A/B testing by creating a 'group' column. It assigns 'test' to the first half of the data and 'control' to the second half, simulating a typical experimental setup for comparison.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_14_AB_Test.ipynb#_snippet_2
+
+LANGUAGE: python
+CODE:
+```
+data_ab = data.copy()
+
+half_data = int(data.shape[0] / 2)
+data_ab['group'] = ['test'] * half_data + ['control'] * half_data
+data_ab.head(3)
+```
+
+----------------------------------------
+
+TITLE: Integrate Custom Neural Network into LightAutoML Pipeline
+DESCRIPTION: This example demonstrates how to instantiate `TabularAutoML` and configure it to use the custom `SimpleNet_plus` model. By setting `general_params` to include `[[SimpleNet_plus]]`, LightAutoML incorporates the custom model into its ensemble, allowing for flexible pipeline definition.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_9_neural_networks.ipynb#_snippet_19
+
+LANGUAGE: python
+CODE:
+```
+automl = TabularAutoML(
+    **default_lama_params,
+    general_params={"use_algos": [[SimpleNet_plus]]},
+    nn_params={
+        **default_nn_params,
+        "hidden_size": 256,
+        "drop_rate": 0.1,
+        "model_with_emb": True,
+    },
+    debug=True
+)
+automl.fit_predict(tr_data, roles = roles, verbose = 1)
+```
+
+----------------------------------------
+
+TITLE: Enable PDF Report Generation on MacOS
+DESCRIPTION: Installs necessary system dependencies on MacOS using Homebrew to enable the PDF report generation feature within LightAutoML. These libraries are required for rendering PDF documents.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/README.md#_snippet_3
+
+LANGUAGE: bash
+CODE:
+```
+brew install cairo pango gdk-pixbuf libffi
+```
+
+----------------------------------------
+
+TITLE: Enable PDF Report Generation on Fedora
+DESCRIPTION: Installs necessary system packages on Fedora using yum to enable PDF report generation within LightAutoML. These dependencies are crucial for the proper functioning of PDF rendering tools.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/README.md#_snippet_5
+
+LANGUAGE: bash
+CODE:
+```
+sudo yum install redhat-rpm-config libffi-devel cairo pango gdk-pixbuf2
+```
+
+----------------------------------------
+
+TITLE: Enable PDF Report Generation on Debian / Ubuntu
+DESCRIPTION: Installs required system packages on Debian or Ubuntu distributions using apt-get to enable PDF report generation functionality for LightAutoML. These packages provide essential rendering and image processing capabilities.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/README.md#_snippet_4
+
+LANGUAGE: bash
+CODE:
+```
+sudo apt-get install build-essential libcairo2 libpango-1.0-0 libpangocairo-1.0-0 libgdk-pixbuf2.0-0 libffi-dev shared-mime-info
+```
+
+----------------------------------------
+
+TITLE: Import Core Libraries for LightAutoML Pipeline
+DESCRIPTION: Imports standard Python libraries, installed third-party libraries like NumPy, Pandas, scikit-learn, and PyTorch, and specific modules from the LightAutoML package. These imports provide the foundational components for data manipulation, model training, and pipeline construction.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_6_custom_pipeline.ipynb#_snippet_1
+
+LANGUAGE: python
+CODE:
+```
+# Standard python libraries
+import os
+import time
+import requests
+
+
+# Installed libraries
+import numpy as np
+import pandas as pd
+from sklearn.metrics import roc_auc_score
+from sklearn.model_selection import train_test_split
+import torch
+
+# Imports from our package
+from lightautoml.automl.base import AutoML
+from lightautoml.ml_algo.boost_lgbm import BoostLGBM
+from lightautoml.ml_algo.tuning.optuna import OptunaTuner
+from lightautoml.pipelines.features.lgb_pipeline import LGBSimpleFeatures
+from lightautoml.pipelines.ml.base import MLPipeline
+from lightautoml.pipelines.selection.importance_based import ImportanceCutoffSelector, ModelBasedImportanceEstimator
+from lightautoml.reader.base import PandasToPandasReader
+from lightautoml.tasks import Task
+from lightautoml.automl.blend import WeightedBlender
+```
+
+----------------------------------------
+
+TITLE: CatEmbedder Class API Reference
+DESCRIPTION: API documentation for the `CatEmbedder` class, a PyTorch module designed to process categorical features using embedding layers. It provides methods for initializing the embedder, getting the output shape, and performing the forward pass.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_9_neural_networks.ipynb#_snippet_21
+
+LANGUAGE: APIDOC
+CODE:
+```
+CatEmbedder(nn.Module)
+  Description: Category data model.
+  __init__(cat_dims: Sequence[int], **kwargs)
+    cat_dims: Sequence with number of unique categories for category features
+  get_out_shape() -> int
+    Description: Output shape.
+    Returns: Int with module output shape.
+  forward(inp: Dict[str, torch.Tensor]) -> torch.Tensor
+    Description: Concat all categorical embeddings
+```
+
+----------------------------------------
+
+TITLE: Train AutoML Model and Get OOF Predictions
+DESCRIPTION: This snippet demonstrates how to train the configured AutoML pipeline on training data. It uses the specified target column and returns the fitted model along with Out-Of-Fold (OOF) predictions.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_6_custom_pipeline.ipynb#_snippet_15
+
+LANGUAGE: python
+CODE:
+```
+%%time 
+
+oof_pred = automl.fit_predict(train_data, roles={'target': TARGET_NAME})
+print('oof_pred:\n{}\nShape = {}'.format(oof_pred, oof_pred.shape))
+```
+
+----------------------------------------
+
+TITLE: Initialize LightAutoML Main Instance
+DESCRIPTION: Initializes the main `AutoML` instance, providing the data reader and the composed one-level machine learning pipeline, setting up the framework for model training.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_10_relational_data_with_star_scheme.ipynb#_snippet_15
+
+LANGUAGE: python
+CODE:
+```
+automl = AutoML(reader, [[pipeline_lvl1],], skip_conn=False)
+```
+
+----------------------------------------
+
+TITLE: Execute Tutorials via CLI with run_tutorials.py
+DESCRIPTION: This script allows executing tutorials directly from the command line. It stops execution upon encountering any error. Users can run all tutorials (except those excluded by default) or specify individual tutorials by their index.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/scripts/README.md#_snippet_1
+
+LANGUAGE: bash
+CODE:
+```
+# Run all tutorials except those excluded by default.
+poetry run python scripts/run_tutorials.py
+
+# Run tutorials (1, 2)
+poetry run python scripts/run_tutorials -t 1 -t 2
+```
+
+----------------------------------------
+
+TITLE: Import LightAutoML WhiteBoxPreset Components
+DESCRIPTION: Imports necessary classes from `lightautoml` for using the `WhiteBoxPreset`, specifically `WhiteBoxPreset` itself and `Task`. These are foundational components for setting up an AutoML pipeline.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_2_WhiteBox_AutoWoE.ipynb#_snippet_14
+
+LANGUAGE: python
+CODE:
+```
+from lightautoml.automl.presets.whitebox_presets import WhiteBoxPreset
+from lightautoml.tasks import Task
+```
+
+----------------------------------------
+
+TITLE: Create TabularAutoML Model with Custom Parameters
+DESCRIPTION: This snippet demonstrates how to initialize a `TabularAutoML` model using a preset, configuring general, reader, tuning, and LightGBM parameters. It then fits the model to training data and generates out-of-fold predictions.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_3_sql_data_source.ipynb#_snippet_14
+
+LANGUAGE: Python
+CODE:
+```
+%%time 
+
+automl = TabularAutoML(task = task, 
+                       timeout = TIMEOUT,
+                       general_params = {'nested_cv': False, 'use_algos': [['linear_l2', 'lgb', 'lgb_tuned']]},
+                       reader_params = {'cv': N_FOLDS, 'random_state': RANDOM_STATE},
+                       tuning_params = {'max_tuning_iter': 20, 'max_tuning_time': 30},
+                       lgb_params = {'default_params': {'num_threads': N_THREADS}})
+oof_pred = automl.fit_predict(train_data, roles = roles)
+print('oof_pred:\n{}\nShape = {}'.format(oof_pred, oof_pred.shape))
+```
+
+----------------------------------------
+
+TITLE: Initialize Matcher Model with Basic Parameters
+DESCRIPTION: This code instantiates the `Matcher` model using the prepared DataFrame, outcome, treatment, and info columns. It employs the 'fast' algorithm for matching, providing a straightforward approach to begin a matching task when no complex or strict conditions are initially required.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_15_Matching.ipynb#_snippet_7
+
+LANGUAGE: python
+CODE:
+```
+# Standard model with base parameters
+model = Matcher(input_data=df, outcome=outcome, treatment=treatment, info_col=info_col,
+                algo='fast')
+```
+
+----------------------------------------
+
+TITLE: Initialize LightAutoML FeatureGeneratorPipeline Instance
+DESCRIPTION: Initializes an instance of `FeatureGeneratorPipeline` with specified parameters, including `max_gener_features`, `interesting_values`, and parallel processing settings, to prepare for advanced feature engineering.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_10_relational_data_with_star_scheme.ipynb#_snippet_13
+
+LANGUAGE: python
+CODE:
+```
+generator = FeatureGeneratorPipeline(
+    seq_params,
+    max_gener_features=500,
+    interesting_values = interesting_values,
+    generate_interesting_values = True,
+    per_top_categories = 25,
+    sample_size = None,
+    n_jobs = 16
+)
+```
+
+----------------------------------------
+
+TITLE: Download Sample Dataset if Not Exists
+DESCRIPTION: Checks for the local presence of the specified dataset file. If the file is not found, it creates the necessary directory and downloads the `sampled_app_train.csv` dataset from its GitHub URL, saving it locally.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_3_sql_data_source.ipynb#_snippet_5
+
+LANGUAGE: Python
+CODE:
+```
+%%time
+
+if not os.path.exists(DATASET_FULLNAME):
+    os.makedirs(DATASET_DIR, exist_ok=True)
+
+    dataset = requests.get(DATASET_URL).text
+    with open(DATASET_FULLNAME, 'w') as output:
+        output.write(dataset)
+```
+
+----------------------------------------
+
+TITLE: Preview Main Relational DataFrame
+DESCRIPTION: This command displays the first few rows of the `df_main` DataFrame. It provides an initial look at the main fact table, which contains order information and the target variable.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_10_relational_data_with_star_scheme.ipynb#_snippet_5
+
+LANGUAGE: Python
+CODE:
+```
+df_main.head()
+```
+
+----------------------------------------
+
+TITLE: Load and split tabular data for LightAutoML training
+DESCRIPTION: Defines the dataset directory and name, downloads the dataset if it doesn't exist, loads it into a pandas DataFrame, and then splits it into training and testing sets using stratified sampling based on the target column.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_9_neural_networks.ipynb#_snippet_3
+
+LANGUAGE: python
+CODE:
+```
+DATASET_DIR = '../data/'
+DATASET_NAME = 'sampled_app_train.csv'
+DATASET_FULLNAME = os.path.join(DATASET_DIR, DATASET_NAME)
+DATASET_URL = 'https://raw.githubusercontent.com/AILab-MLTools/LightAutoML/master/examples/data/sampled_app_train.csv'
+
+if not os.path.exists(DATASET_FULLNAME):
+    os.makedirs(DATASET_DIR, exist_ok=True)
+
+    dataset = requests.get(DATASET_URL).text
+    with open(DATASET_FULLNAME, 'w') as output:
+        output.write(dataset)
+
+data = pd.read_csv(DATASET_FULLNAME)
+data.head()
+
+tr_data, te_data = train_test_split(
+    data,
+    test_size=TEST_SIZE,
+    stratify=data[TARGET_NAME],
+    random_state=RANDOM_STATE
+)
+```
+
+----------------------------------------
+
+TITLE: Import Utility for Test Data Creation
+DESCRIPTION: This code imports the `create_test_data` function, a utility designed to generate synthetic datasets. It allows users to quickly set up a dataset for demonstration and testing purposes without needing to provide their own data.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_15_Matching.ipynb#_snippet_1
+
+LANGUAGE: python
+CODE:
+```
+from lightautoml.addons.hypex.utils.tutorial_data_creation import create_test_data
+```
+
+----------------------------------------
+
+TITLE: Initialize LightAutoML Task and Sequential Reader
+DESCRIPTION: This code demonstrates how to manually set up the LightAutoML pipeline for linked tables, as tabular presets are not applicable. It involves defining a 'Task' with a specific objective and metric, setting roles for the target variable, and then initializing 'DictToPandasSeqReader' with the task and sequential data parameters for processing relational data.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_10_relational_data_with_star_scheme.ipynb#_snippet_10
+
+LANGUAGE: python
+CODE:
+```
+task = Task('reg', metric='mae')
+roles={'target': 'num_orders'}
+reader = DictToPandasSeqReader(task=task, seq_params=seq_params)
+```
+
+----------------------------------------
+
+TITLE: LightAutoML Training Loop and Pipeline Parameters
+DESCRIPTION: Outlines key parameters for configuring the neural network training loop and data preprocessing pipeline within LightAutoML. It covers batch size, early stopping, optimizer settings, gradient clipping, embedding dropout, and transformations for numerical and categorical features.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_9_neural_networks.ipynb#_snippet_13
+
+LANGUAGE: APIDOC
+CODE:
+```
+Training Loop Parameters (nn_params):
+  bs: batch_size
+  snap_params: early stopping and checkpoint averaging params, stochastic weight averaging (swa)
+  opt: lr optimizer
+  opt_params: optimizer params
+  clip_grad: use grad clipping for regularization
+  clip_grad_params:
+  emb_dropout: embedding dropout for categorical columns
+
+Pipeline Parameters (nn_pipeline_params):
+  Transformation for numerical columns:
+    use_qnt: uses quantile transformation for numerical columns
+    output_distribution: type of distribuiton of feature after qnt transformer
+    n_quantiles: number of quantiles used to build feature distribution
+    qnt_factor: decreses n_quantiles depending on train data shape
+  Transformation for categorical columns:
+    use_te: uses target encoding
+    top_intersections: number of intersections of cat columns to use
+```
+
+----------------------------------------
+
+TITLE: Configuring Data Paths and Downloading Jobs Dataset
+DESCRIPTION: Defines constants for the dataset directory, name, and full path. It then checks if the dataset exists locally and downloads it from a GitHub URL if not, ensuring the data is available for processing.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_2_WhiteBox_AutoWoE.ipynb#_snippet_2
+
+LANGUAGE: python
+CODE:
+```
+DATASET_DIR = '../data/'
+DATASET_NAME = 'jobs_train.csv'
+DATASET_FULLNAME = os.path.join(DATASET_DIR, DATASET_NAME)
+DATASET_URL = 'https://raw.githubusercontent.com/AILab-MLTools/LightAutoML/master/examples/data/jobs_train.csv'
+```
+
+LANGUAGE: python
+CODE:
+```
+%%time
+
+if not os.path.exists(DATASET_FULLNAME):
+    os.makedirs(DATASET_DIR, exist_ok=True)
+
+    dataset = requests.get(DATASET_URL).text
+    with open(DATASET_FULLNAME, 'w') as output:
+        output.write(dataset)
+```
+
+----------------------------------------
+
+TITLE: Instantiate LightAutoML TabularAutoML Model
+DESCRIPTION: Initializes a `TabularAutoML` model instance with specified task, timeout, CPU limits, and neural network parameters. It configures the model to use MLP algorithms, sets training epochs, batch size, and data preprocessing options.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_9_neural_networks.ipynb#_snippet_7
+
+LANGUAGE: python
+CODE:
+```
+automl = TabularAutoML(
+    task = task, 
+    timeout = TIMEOUT,
+    cpu_limit = N_THREADS,
+    general_params = {"use_algos": [["mlp"]]}, # ['nn', 'mlp', 'dense', 'denselight', 'resnet', 'snn', 'node', 'autoint', 'fttransformer'] or custom torch model
+    nn_params = {"n_epochs": 10, "bs": 512, "num_workers": 0, "path_to_save": None, "freeze_defaults": True},
+    nn_pipeline_params = {"use_qnt": True, "use_te": False},
+    reader_params = {'n_jobs': N_THREADS, 'cv': N_FOLDS, 'random_state': RANDOM_STATE}
+)
+```
+
+----------------------------------------
+
+TITLE: Import Libraries for A/Bn Testing in Python
+DESCRIPTION: Imports `bernoulli` from `scipy.stats` for generating random samples, and `min_sample_size`, `test_on_marginal_distribution` from `lightautoml.addons.hypex.abn_test` for A/Bn testing functionalities, along with `numpy` for numerical operations.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_18_Test_Limit_Distribution.ipynb#_snippet_0
+
+LANGUAGE: python
+CODE:
+```
+from scipy.stats import bernoulli
+
+from lightautoml.addons.hypex.abn_test import min_sample_size
+from lightautoml.addons.hypex.abn_test import test_on_marginal_distribution
+import numpy as np
+```
+
+----------------------------------------
+
+TITLE: Fit AutoUplift Model with Predefined Methods
+DESCRIPTION: Initializes and fits the `AutoUplift` model from LightAutoML. It defines a binary task, specifies 'adj_qini' as the metric for evaluation, enables reporting, sets the test size for internal validation, and defines a timeout for the AutoML process, then trains the model on the provided training data and roles.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_5_uplift.ipynb#_snippet_11
+
+LANGUAGE: python
+CODE:
+```
+task = Task('binary')
+
+autouplift = AutoUplift(task,
+                        metric='adj_qini', 
+                        has_report=True,
+                        test_size=0.2, 
+                        timeout=200,
+                        # timeout_metalearner=5
+)
+
+autouplift.fit(train, roles, verbose=1)
+```
+
+----------------------------------------
+
+TITLE: Import Necessary Libraries for LightAutoML
+DESCRIPTION: Imports standard Python libraries (os, time, requests), common data science libraries (numpy, pandas, sklearn, torch), and specific modules from the LightAutoML package, including tabular presets, dataset roles, and task definitions.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_3_sql_data_source.ipynb#_snippet_1
+
+LANGUAGE: Python
+CODE:
+```
+# Standard python libraries
+import os
+import time
+import requests
+# Installed libraries
+import numpy as np
+import pandas as pd
+from sklearn.metrics import roc_auc_score
+from sklearn.model_selection import train_test_split
+import torch
+
+# Imports from our package
+import gensim
+from lightautoml.automl.presets.tabular_presets import TabularAutoML, TabularUtilizedAutoML
+from lightautoml.dataset.roles import DatetimeRole
+from lightautoml.tasks import Task
+```
+
+----------------------------------------
+
+TITLE: Create 1st Level ML Pipeline for AutoML with LightAutoML
+DESCRIPTION: This snippet defines the first level of the AutoML pipeline, which includes simple features for gradient boosting and two LightGBM models. One model uses OptunaTuner for parameter tuning, and the other uses heuristic parameters. It sets up the MLPipeline with a pre-selection step.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_6_custom_pipeline.ipynb#_snippet_12
+
+LANGUAGE: python
+CODE:
+```
+%%time 
+
+pipe = LGBSimpleFeatures()
+
+params_tuner1 = OptunaTuner(n_trials=20, timeout=30) # stop after 20 iterations or after 30 seconds 
+model1 = BoostLGBM(
+    default_params={'learning_rate': 0.05, 'num_leaves': 128, 'seed': 1, 'num_threads': N_THREADS}
+)
+model2 = BoostLGBM(
+    default_params={'learning_rate': 0.025, 'num_leaves': 64, 'seed': 2, 'num_threads': N_THREADS}
+)
+
+pipeline_lvl1 = MLPipeline([
+    (model1, params_tuner1),
+    model2
+], pre_selection=selector, features_pipeline=pipe, post_selection=None)
+```
+
+----------------------------------------
+
+TITLE: Prepare Train and Test Datasets for LightAutoML Star Scheme
+DESCRIPTION: This snippet shows how to split the main dataframe into training and testing sets and then structure them into dictionaries. Each dictionary contains a 'plain' key for the main dataset and a 'seq' key referencing the 'seq_data' dictionary for secondary tables, ensuring proper data organization for LightAutoML's relational processing.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_10_relational_data_with_star_scheme.ipynb#_snippet_9
+
+LANGUAGE: python
+CODE:
+```
+train, test = train_test_split(df_main.sort_values(by='week', ascending=True), shuffle=False, test_size=0.2)
+
+train = {
+    'plain': train,
+    'seq': seq_data
+}
+
+test = {
+    'plain': test,
+    'seq': seq_data
+}
+```
+
+----------------------------------------
+
+TITLE: Preview Fulfilment Center Info DataFrame
+DESCRIPTION: This command displays the first few rows of the `fulfilment_center_info` DataFrame. It helps in quickly inspecting the structure and content of the auxiliary table containing information about fulfilment centers.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_10_relational_data_with_star_scheme.ipynb#_snippet_3
+
+LANGUAGE: Python
+CODE:
+```
+fulfilment_center_info.head()
+```
+
+----------------------------------------
+
+TITLE: LightAutoML TabularAutoML Class Parameters
+DESCRIPTION: Describes the configurable parameters for the `TabularAutoML` class, including task definition, resource limits, and neural network specific settings for training and data preprocessing.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_9_neural_networks.ipynb#_snippet_6
+
+LANGUAGE: APIDOC
+CODE:
+```
+TabularAutoML:
+  task: The type of the ML task (must-have parameter)
+  timeout: Time limit in seconds for model to train
+  cpu_limit: vCPU count for model to use
+  nn_params: Network and training parameters (e.g., "hidden_size", "batch_size", "lr")
+  nn_pipeline_params: Data preprocessing parameters affecting data feed (e.g., embeddings, target encoding, standard scalar, quantile transformer)
+  reader_params: Parameters for the Reader object in data preparation (e.g., automatic feature typization, preliminary almost-constant features, correct CV setup)
+```
+
+----------------------------------------
+
+TITLE: Define Global Parameters for AutoML Configuration
+DESCRIPTION: Sets up key parameters that control the LightAutoML execution, such as the number of threads for models, cross-validation folds, a fixed random state for reproducibility, the test set size for evaluation, the maximum runtime for AutoML, and the name of the target column.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_3_sql_data_source.ipynb#_snippet_2
+
+LANGUAGE: Python
+CODE:
+```
+N_THREADS = 8 # threads cnt for lgbm and linear models
+N_FOLDS = 5 # folds cnt for AutoML
+RANDOM_STATE = 42 # fixed random state for various reasons
+TEST_SIZE = 0.2 # Test size for metric check
+TIMEOUT = 300 # Time in seconds for automl run
+TARGET_NAME = 'TARGET' # Target column name
+```
+
+----------------------------------------
+
+TITLE: List Available Uplift Metrics in LightAutoML
+DESCRIPTION: This snippet demonstrates how to retrieve and print all available uplift metrics supported by LightAutoML. It sets a default metric and then accesses a predefined variable _available_uplift_modes to display the full list of options for uplift evaluation.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_5_uplift.ipynb#_snippet_24
+
+LANGUAGE: python
+CODE:
+```
+%%time 
+
+UPLIFT_METRIC = 'adj_qini'
+
+print("All available uplift metrics: {}".format(_available_uplift_modes))
+```
+
+----------------------------------------
+
+TITLE: Import Core Libraries for LightAutoML Project
+DESCRIPTION: This code block imports essential libraries for data manipulation, machine learning, and LightAutoML functionalities. It includes standard Python modules, data science libraries like pandas and scikit-learn, and specific LightAutoML components for AutoML, feature engineering, and task definition.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_10_relational_data_with_star_scheme.ipynb#_snippet_1
+
+LANGUAGE: Python
+CODE:
+```
+# Standard python libraries
+from os.path import join as pjoin
+
+# ML and DS libraries
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_absolute_error
+
+# Imports from lightautoml package
+from lightautoml.automl.base import AutoML
+from lightautoml.ml_algo.boost_lgbm import BoostLGBM
+
+from lightautoml.pipelines.features.lgb_pipeline import LGBSimpleFeatures
+from lightautoml.pipelines.ml.base import MLPipeline
+from lightautoml.reader.base import DictToPandasSeqReader
+from lightautoml.tasks import Task
+
+# Import Feature Generator Transformer
+from lightautoml.pipelines.features.generator_pipeline import FeatureGeneratorPipeline
+```
+
+----------------------------------------
+
+TITLE: Initialize Matcher Model
+DESCRIPTION: Instantiates the `Matcher` class with input data, outcome, treatment, informational columns, and the previously defined `group_col`. This sets up the model for subsequent matching operations.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_15_Matching.ipynb#_snippet_15
+
+LANGUAGE: python
+CODE:
+```
+model = Matcher(input_data=df, outcome=outcome, treatment=treatment,
+                info_col=info_col, group_col=group_col)
+```
+
+----------------------------------------
+
+TITLE: Download Sample Dataset if Not Exists
+DESCRIPTION: Checks if the dataset file exists locally and, if not, downloads it from the specified URL. This ensures that the required data is available for processing, creating the directory if necessary.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_6_custom_pipeline.ipynb#_snippet_5
+
+LANGUAGE: python
+CODE:
+```
+%%time
+
+if not os.path.exists(DATASET_FULLNAME):
+    os.makedirs(DATASET_DIR, exist_ok=True)
+
+    dataset = requests.get(DATASET_URL).text
+    with open(DATASET_FULLNAME, 'w') as output:
+        output.write(dataset)
+```
+
+----------------------------------------
+
+TITLE: Initialize WhiteBoxPreset for Binary Classification
+DESCRIPTION: Initializes a `Task` for binary classification and then creates an instance of `WhiteBoxPreset` configured for that task. This preset is designed for interpretable models and automates many ML pipeline steps.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_2_WhiteBox_AutoWoE.ipynb#_snippet_15
+
+LANGUAGE: python
+CODE:
+```
+task = Task('binary')
+automl = WhiteBoxPreset(task)
+```
+
+----------------------------------------
+
+TITLE: Load Sample Dataset into Pandas DataFrame
+DESCRIPTION: Reads the downloaded `sampled_app_train.csv` file into a Pandas DataFrame. This step prepares the data for subsequent preprocessing and model training within the LightAutoML framework, displaying the first few rows for verification.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_3_sql_data_source.ipynb#_snippet_6
+
+LANGUAGE: Python
+CODE:
+```
+%%time
+
+data = pd.read_csv(DATASET_FULLNAME)
+data.head()
+```
+
+----------------------------------------
+
+TITLE: Define constants for LightAutoML configuration
+DESCRIPTION: Sets up key constants for the LightAutoML kernel, including the number of threads, cross-validation folds, random state for reproducibility, test data split size, training timeout, and the target column name. Also initializes random seeds for numpy and torch.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_9_neural_networks.ipynb#_snippet_2
+
+LANGUAGE: python
+CODE:
+```
+N_THREADS = 4
+N_FOLDS = 5
+RANDOM_STATE = 42
+TEST_SIZE = 0.2
+TIMEOUT = 300
+TARGET_NAME = 'TARGET'
+
+np.random.seed(RANDOM_STATE)
+torch.set_num_threads(N_THREADS)
+```
+
+----------------------------------------
+
+TITLE: Define Default LightAutoML and Neural Network Parameters
+DESCRIPTION: Establishes default parameter dictionaries for LightAutoML and neural network configurations. These defaults include task type, timeout, CPU limits, reader settings, batch size, number of epochs, and saving paths, facilitating more compact model definitions.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_9_neural_networks.ipynb#_snippet_14
+
+LANGUAGE: python
+CODE:
+```
+default_lama_params = {
+    "task": task, 
+    "timeout": TIMEOUT,
+    "cpu_limit": N_THREADS,
+    "reader_params": {'n_jobs': N_THREADS, 'cv': N_FOLDS, 'random_state': RANDOM_STATE}
+}
+
+default_nn_params = {
+    "bs": 512, "num_workers": 0, "path_to_save": None, "n_epochs": 10, "freeze_defaults": True
+}
+```
+
+----------------------------------------
+
+TITLE: Preview Meal Info DataFrame
+DESCRIPTION: This command displays the first few rows of the `meal_info` DataFrame. It allows for a quick inspection of the structure and content of the auxiliary table containing details about available meals.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_10_relational_data_with_star_scheme.ipynb#_snippet_4
+
+LANGUAGE: Python
+CODE:
+```
+meal_info.head()
+```
+
+----------------------------------------
+
+TITLE: Import essential libraries for LightAutoML neural network training
+DESCRIPTION: Imports standard Python libraries, essential data science libraries like numpy, pandas, scikit-learn, and torch, and specific LightAutoML modules for AutoML presets, task definition, and report generation.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_9_neural_networks.ipynb#_snippet_1
+
+LANGUAGE: python
+CODE:
+```
+# Standard python libraries
+import os
+
+# Essential DS libraries
+import optuna
+import requests
+import numpy as np
+import pandas as pd
+from sklearn.metrics import roc_auc_score
+from sklearn.model_selection import train_test_split
+import torch
+from copy import deepcopy as copy
+import torch.nn as nn
+from collections import OrderedDict
+
+# LightAutoML presets, task and report generation
+from lightautoml.automl.presets.tabular_presets import TabularAutoML
+from lightautoml.tasks import Task
+```
+
+----------------------------------------
+
+TITLE: Configure LightAutoML with Custom Neural Network
+DESCRIPTION: This snippet demonstrates how to initialize `TabularAutoML` and integrate the previously defined `SimpleNet` as a custom model. It sets general parameters to use `SimpleNet` and configures neural network-specific parameters like `hidden_size` and `drop_rate`. Finally, it fits and predicts using the configured AutoML instance.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_9_neural_networks.ipynb#_snippet_16
+
+LANGUAGE: python
+CODE:
+```
+automl = TabularAutoML(
+    **default_lama_params,
+    general_params={"use_algos": [[SimpleNet]]},
+    nn_params={
+        **default_nn_params,
+        "hidden_size": 256,
+        "drop_rate": 0.1
+    },
+)
+automl.fit_predict(tr_data, roles=roles, verbose=1)
+```
+
+----------------------------------------
+
+TITLE: LightAutoML FeatureGeneratorPipeline Class Parameters
+DESCRIPTION: Documents the key parameters for configuring the `FeatureGeneratorPipeline` class in LightAutoML, including options for sequence parameters, feature limits, aggregation and transformation primitives, and interesting value generation.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_10_relational_data_with_star_scheme.ipynb#_snippet_12
+
+LANGUAGE: APIDOC
+CODE:
+```
+FeatureGeneratorPipeline Parameters:
+- seq_params: secondary tables or sequence related parameters.
+- max_gener_features: maximum number of generated features.
+- max_depth: maximum allowed depth of features (that is, the number of consecutively applied aggregation and transformation primitives in a superposition to obtain features).
+- agg_primitives: list of aggregation primitives. By default it is ["entropy", "count", "mean", "std", "median", "max", "sum", "num_unique", "min", "percent_true"].
+- trans_primitives: list of transform primitives. By default it is ["hour", "month", "weekday", "is_weekend", "day", "time_since_previous", "week", "age", "time_since"].
+- interesting_values: categorical values if the form of {'table_name': {'column': [values]}} for feature generation in corresponding slices (like the `interesting_values` dictionary above).
+- generate_interesting_values: whether generate feature in slices of unique categories or not.
+- per_top_categories: percent of most frequent categories for feature generation in corresponding slices. If number of unique values is less than 10, then the all values are be used.
+- sample_size: size of data to make generated feature selection on it.
+- n_jobs: number of processes to run in parallel.
+```
+
+----------------------------------------
+
+TITLE: Initialize Random Seed and PyTorch Threads
+DESCRIPTION: Ensures the reproducibility of random operations by setting the NumPy random seed and optimizes PyTorch performance by configuring the number of threads it can utilize, aligning with the `N_THREADS` parameter.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_3_sql_data_source.ipynb#_snippet_3
+
+LANGUAGE: Python
+CODE:
+```
+np.random.seed(RANDOM_STATE)
+torch.set_num_threads(N_THREADS)
+```
+
+----------------------------------------
+
+TITLE: Load Dataset into Pandas DataFrame
+DESCRIPTION: Reads the downloaded CSV dataset into a pandas DataFrame. The `head()` method is then called to display the first few rows, verifying successful loading and providing an initial glimpse of the data structure.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_5_uplift.ipynb#_snippet_7
+
+LANGUAGE: python
+CODE:
+```
+data = pd.read_csv(DATASET_FULLNAME)
+data.head()
+```
+
+----------------------------------------
+
+TITLE: Generate Sample AB Test Dataset
+DESCRIPTION: This code generates a synthetic dataset suitable for A/B testing using the `create_test_data` utility function. It allows specifying the number of users, a random seed for reproducibility, and columns where NaN values should be introduced, preparing the data for analysis.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_14_AB_Test.ipynb#_snippet_1
+
+LANGUAGE: python
+CODE:
+```
+data = create_test_data(num_users=10000, rs=52, na_step=10, nan_cols=['age', 'gender'])
+data
+```
+
+----------------------------------------
+
+TITLE: Compose LightAutoML MLPipeline with LightGBM
+DESCRIPTION: Composes a one-level machine learning pipeline by appending basic transformations (`LGBSimpleFeatures`) to the feature generator and integrating a `BoostLGBM` model, without pre-selection or post-selection of features.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_10_relational_data_with_star_scheme.ipynb#_snippet_14
+
+LANGUAGE: python
+CODE:
+```
+simpletransf = LGBSimpleFeatures()
+feats = generator.append(simpletransf)
+
+model = BoostLGBM()
+
+pipeline_lvl1 = MLPipeline([model], pre_selection=None, features_pipeline=feats,post_selection=None)
+```
+
+----------------------------------------
+
+TITLE: Initialize AutoWoE with Default Settings
+DESCRIPTION: Configures an AutoWoE model with standard parameters for interpretable and non-monotonic binning, setting thresholds for feature selection and merging. The model is then wrapped with `ReportDeco` for report generation capabilities.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_2_WhiteBox_AutoWoE.ipynb#_snippet_4
+
+LANGUAGE: python
+CODE:
+```
+auto_woe_0 = AutoWoE(interpreted_model=True,
+                     monotonic=False,
+                     max_bin_count=5,
+                     select_type=None,
+                     pearson_th=0.9,
+                     metric_th=.505,
+                     vif_th=10.,
+                     imp_th=0,
+                     th_const=32,
+                     force_single_split=True,
+                     th_nan=0.01,
+                     th_cat=0.005,
+                     metric_tol=1e-4,
+                     cat_alpha=100,
+                     cat_merge_to="to_woe_0",
+                     nan_merge_to="to_woe_0",
+                     imp_type="feature_imp",
+                     regularized_refit=False,
+                     p_val=0.05,
+                     verbose=2
+        )
+
+auto_woe_0 = ReportDeco(auto_woe_0, )
+```
+
+----------------------------------------
+
+TITLE: Import Data Creation Utility for LightAutoML Hypex
+DESCRIPTION: Imports the `create_test_data` function, a utility designed to generate synthetic datasets for tutorial purposes within the LightAutoML hypex addon.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_16_Matching_without_replacement.ipynb#_snippet_1
+
+LANGUAGE: python
+CODE:
+```
+from lightautoml.addons.hypex.utils.tutorial_data_creation import create_test_data
+```
+
+----------------------------------------
+
+TITLE: Create TabularUtilizedAutoML Model for Time Optimization
+DESCRIPTION: This snippet illustrates the creation of a `TabularUtilizedAutoML` model, specifically designed to utilize the allocated `timeout` as much as possible. It configures various parameters similar to `TabularAutoML` and fits the model to training data.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_3_sql_data_source.ipynb#_snippet_16
+
+LANGUAGE: Python
+CODE:
+```
+%%time 
+
+automl = TabularUtilizedAutoML(task = task, 
+                       timeout = TIMEOUT,
+                       general_params = {'nested_cv': False, 'use_algos': [['linear_l2', 'lgb', 'lgb_tuned']]},
+                       reader_params = {'cv': N_FOLDS, 'random_state': RANDOM_STATE},
+                       tuning_params = {'max_tuning_iter': 20, 'max_tuning_time': 30},
+                       lgb_params = {'default_params': {'num_threads': N_THREADS}})
+oof_pred = automl.fit_predict(train_data, roles = roles)
+print('oof_pred:\n{}\nShape = {}'.format(oof_pred, oof_pred.shape))
+```
+
+----------------------------------------
+
+TITLE: Initialize Matcher Model
+DESCRIPTION: Instantiates the `Matcher` class with the prepared dataset (`df`), outcome variable, treatment variable, and informative columns. This sets up the matching model with base parameters.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_16_Matching_without_replacement.ipynb#_snippet_7
+
+LANGUAGE: python
+CODE:
+```
+# Standard model with base parameters
+model = Matcher(input_data=df, outcome=outcome, treatment=treatment, info_col=info_col)
+```
+
+----------------------------------------
+
+TITLE: Train LightAutoML Model on Loaded Data
+DESCRIPTION: Trains the initialized `AutoML` model using the provided training data and roles, with a verbosity level set to 3 for detailed logging of the training process and feature selection.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_10_relational_data_with_star_scheme.ipynb#_snippet_16
+
+LANGUAGE: python
+CODE:
+```
+%%time
+
+train_pred = automl.fit_predict(train, roles=roles, verbose=3)
+```
+
+----------------------------------------
+
+TITLE: Importing Essential Libraries for AutoWoE
+DESCRIPTION: This snippet imports necessary Python libraries including pandas for data manipulation, numpy for numerical operations, os and requests for file handling and data retrieval, joblib for serialization, scikit-learn for model selection and metrics, and autowoe for the core AutoWoE functionality.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_2_WhiteBox_AutoWoE.ipynb#_snippet_1
+
+LANGUAGE: python
+CODE:
+```
+import pandas as pd
+from pandas import Series, DataFrame
+
+import numpy as np
+
+import os
+import requests
+import joblib
+
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import roc_auc_score
+
+from autowoe import AutoWoE, ReportDeco
+```
+
+----------------------------------------
+
+TITLE: SimpleNet_plus Class API Reference
+DESCRIPTION: API documentation for the `SimpleNet_plus` class, a mixed data model built upon `TorchUniversalModel`. It integrates categorical and continuous embedders and defines the logic for generating logits from combined input features.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_9_neural_networks.ipynb#_snippet_23
+
+LANGUAGE: APIDOC
+CODE:
+```
+SimpleNet_plus(TorchUniversalModel)
+  Description: Mixed data model. Class for preparing input for DL model with mixed data.
+  __init__(n_out: int = 1, cont_params: Optional[Dict] = None, cat_params: Optional[Dict] = None, **kwargs)
+    n_out: Number of output dimensions.
+    cont_params: Dict with numeric model params.
+    cat_params: Dict with category model para
+    **kwargs: Loss, task and other parameters.
+  get_logits(inp: Dict[str, torch.Tensor]) -> torch.Tensor
+```
+
+----------------------------------------
+
+TITLE: Obtain LightAutoML Pipeline Description
+DESCRIPTION: Prints a string description of the trained LightAutoML pipeline. This method provides insights into the internal structure and components of the generated model, aiding in understanding its architecture.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_9_neural_networks.ipynb#_snippet_12
+
+LANGUAGE: python
+CODE:
+```
+print(automl.create_model_str_desc())
+```
+
+----------------------------------------
+
+TITLE: Fit TLearner Meta-Learner on Training Data
+DESCRIPTION: This snippet demonstrates how to initialize and fit a TLearner meta-learner model from LightAutoML's metalearners module. It sets the base task to 'binary' and specifies a CPU limit, then trains the model using the provided train data and roles.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_5_uplift.ipynb#_snippet_20
+
+LANGUAGE: python
+CODE:
+```
+%%time
+
+# Default setting
+tlearner = metalearners.TLearner(base_task=Task('binary'), cpu_limit=5)
+tlearner.fit(train, roles)
+```
+
+----------------------------------------
+
+TITLE: lightautoml.text Utility Functions API Reference
+DESCRIPTION: API documentation for various utility functions within `lightautoml.text`. These functions provide common helper methods for tasks such as seeding random number generators, parsing device configurations, custom data collation, and generating hashes for text arrays.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/docs/pages/modules/text.rst#_snippet_3
+
+LANGUAGE: APIDOC
+CODE:
+```
+lightautoml.text.utils.seed_everything
+lightautoml.text.utils.parse_devices
+lightautoml.text.utils.custom_collate
+lightautoml.text.utils.single_text_hash
+lightautoml.text.utils.get_textarr_hash
+```
+
+----------------------------------------
+
+TITLE: Loading and Splitting Jobs Dataset for Training and Testing
+DESCRIPTION: Loads the `jobs_train.csv` dataset into a pandas DataFrame. It then displays the DataFrame and performs a stratified train-test split, removing the 'enrollee_id' column, to prepare the data for model training and evaluation.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_2_WhiteBox_AutoWoE.ipynb#_snippet_3
+
+LANGUAGE: python
+CODE:
+```
+data = pd.read_csv(DATASET_FULLNAME)
+```
+
+LANGUAGE: python
+CODE:
+```
+data
+```
+
+LANGUAGE: python
+CODE:
+```
+train, test = train_test_split(data.drop('enrollee_id', axis=1), test_size=0.2, stratify=data['target'])
+```
+
+----------------------------------------
+
+TITLE: Configure and Fit AutoUplift with Custom Meta-Learners (LightAutoML)
+DESCRIPTION: This code initializes and fits an `AutoUplift` model, showcasing how to define custom `MetaLearnerWrapper` candidates for T-Learner and X-Learner. It specifies different base learners for treatment, control, outcome, effect, and propensity, demonstrating advanced configuration options for uplift modeling. The `AutoUplift` instance is then fitted to training data with specified roles and verbosity.
+
+SOURCE: https://github.com/sb-ai-lab/lightautoml/blob/master/examples/tutorials/Tutorial_5_uplift.ipynb#_snippet_15
+
+LANGUAGE: python
+CODE:
+```
+%%time
+
+# Set uplift candidate for choosing best of them
+# !!!ATTENTION!!!
+#    This is a demonstration of the possibilities,
+#    You may use default set of candidates 
+
+task = Task('binary')
+
+uplift_candidates = [
+    MetaLearnerWrapper(
+        name='TLearner__Default', 
+        klass=metalearners.TLearner, 
+        params={'base_task': task}
+    ),  
+    MetaLearnerWrapper(
+        name='TLearner__Custom', 
+        klass=metalearners.TLearner, 
+        params={
+            'treatment_learner': BaseLearnerWrapper(
+                name='__TabularAutoML__',
+                klass=TabularAutoML, 
+                params={'task': task, 'timeout': 10}),
+            'control_learner': BaseLearnerWrapper(
+                name='__Linear__',
+                klass=create_linear_automl,
+                params={'task': Task('binary')})
+        }
+    ),
+    MetaLearnerWrapper(
+        name='XLearner__Custom',
+        klass=metalearners.XLearner,
+        params={
+            'outcome_learners': [
+                TabularAutoML(task=task, timeout=10), # [sec] , Only speed up example, don't change it!
+                create_linear_automl(task=Task('binary'))
+            ],
+            'effect_learners': [BaseLearnerWrapper(
+                name='__TabularAutoML__',
+                klass=TabularAutoML, 
+                params={'task': Task('reg'), 'timeout': 5})],
+            'propensity_learner': create_linear_automl(task=Task('binary')),
+        }    
+    )
+]
+
+autouplift = AutoUplift(task,
+                        uplift_candidates=uplift_candidates, 
+                        metric='adj_qini', 
+                        test_size=0.2, 
+                        threshold_imbalance_treatment=0.0,    # Doesn't affect, see warnings
+                        timeout=600)                          # Doesn't affect, see warnings
+
+autouplift.fit(train, roles, verbose=1)
+```

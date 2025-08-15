@@ -1,0 +1,1657 @@
+========================
+CODE SNIPPETS
+========================
+TITLE: Cloning BentoML Quickstart Repository
+DESCRIPTION: This command sequence clones the BentoML quickstart repository from GitHub, providing example projects. The `cd` command then navigates into the cloned directory, preparing the environment for deployment.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/get-started/cloud-deployment.rst#_snippet_2
+
+LANGUAGE: bash
+CODE:
+```
+git clone https://github.com/bentoml/quickstart.git
+cd quickstart
+```
+
+----------------------------------------
+
+TITLE: Setting Up and Configuring BentoML Projects (Bash)
+DESCRIPTION: This snippet provides a multi-step guide for initializing a BentoML project. It covers cloning the `BentoLangGraph` repository, navigating into specific sub-projects like `langgraph-mistral` or `langgraph-anthropic`, installing required Python packages via `pip`, and setting environment variables for API authentication (e.g., `HF_TOKEN` or `ANTHROPIC_API_KEY`). This setup prepares the project for local execution.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/examples/langgraph.rst#_snippet_16
+
+LANGUAGE: bash
+CODE:
+```
+git clone https://github.com/bentoml/BentoLangGraph.git
+
+# Recommend Python 3.11
+
+# Use Ministral-8B-Instruct-2410
+cd BentoLangGraph/langgraph-mistral
+pip install -r requirements.txt
+export HF_TOKEN=<your-hf-token>
+
+# Use Claude 3.5 Sonnet
+cd BentoLangGraph/langgraph-anthropic
+pip install -r requirements.txt
+export ANTHROPIC_API_KEY=<your-anthropic-api-key>
+```
+
+----------------------------------------
+
+TITLE: Running BentoCloud GCP Setup Script - Bash
+DESCRIPTION: This command executes the BentoCloud GCP setup script by piping the content of a URL directly to the bash interpreter. The script automates the creation of necessary infrastructure components for BentoCloud within your GCP project and generates a service account key file.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/scale-with-bentocloud/administering/bring-your-own-cloud/gcp.rst#_snippet_1
+
+LANGUAGE: bash
+CODE:
+```
+bash <(curl https://l.bentoml.com/bentocloud_gcp_setup_script -sL)
+```
+
+----------------------------------------
+
+TITLE: Installing Python Dependencies with pip
+DESCRIPTION: This command installs all required Python packages listed in the `requirements.txt` file. It ensures that all necessary libraries for the text summarization application, including BentoML and Hugging Face transformers, are available in the environment.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/tests/e2e/fixtures/quickstart/README.md#_snippet_0
+
+LANGUAGE: bash
+CODE:
+```
+pip install -r requirements.txt
+```
+
+----------------------------------------
+
+TITLE: Executing BentoCloud Azure Setup Script
+DESCRIPTION: This command executes the BentoCloud Azure setup script downloaded via 'curl'. The script automates the configuration of essential Azure resources, including Azure Kubernetes Service, Blob Storage, and Redis Cache, within a dedicated resource group. Ensure 'jq' is installed as the script uses it for JSON parsing.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/scale-with-bentocloud/administering/bring-your-own-cloud/azure.rst#_snippet_1
+
+LANGUAGE: bash
+CODE:
+```
+bash <(curl https://l.bentoml.com/bentocloud_azure_setup_script -sL)
+```
+
+----------------------------------------
+
+TITLE: Serving BentoML Model as HTTP Server
+DESCRIPTION: This command starts a local HTTP server for the BentoML Service defined in the current directory. It makes the text summarization model accessible as a web service, typically at `http://localhost:3000`, allowing for local testing and interaction.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/tests/e2e/fixtures/quickstart/README.md#_snippet_1
+
+LANGUAGE: bash
+CODE:
+```
+bentoml serve .
+```
+
+----------------------------------------
+
+TITLE: Installing Python Packages from Public GitHub Repositories
+DESCRIPTION: This example shows how to install Python packages directly from public GitHub repositories using the `python_packages()` method. It covers specifying a branch name, a tag, a commit hash, and including a subdirectory within the repository for the package installation.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/build-with-bentoml/runtime-environment.rst#_snippet_3
+
+LANGUAGE: python
+CODE:
+```
+import bentoml
+
+image = bentoml.images.Image(python_version='3.11') \
+    .python_packages(
+        "git+https://github.com/username/repository.git@branch_name",
+        "git+https://github.com/username/repository.git@v1.0.0",
+        "git+https://github.com/username/repository.git@abcdef1234567890abcdef1234567890abcdef12",
+        "git+https://github.com/username/repository.git@branch_name#subdirectory=package_dir"
+    )
+```
+
+----------------------------------------
+
+TITLE: Installing Python Dependencies for BentoML Project
+DESCRIPTION: This command installs all required Python packages listed in the `requirements.txt` file, which are necessary to run the BentoML project, including Scikit-learn and BentoML itself.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/tests/monitoring/task_classification/README.md#_snippet_0
+
+LANGUAGE: bash
+CODE:
+```
+pip install -r ./requirements.txt
+```
+
+----------------------------------------
+
+TITLE: Configuring NLTK Data Download with Python Setup Script (pyproject.toml)
+DESCRIPTION: This TOML configuration for `pyproject.toml` specifies the installation of the `nltk` Python package and the execution of a `setup.py` script during the Docker image build. This allows for custom initialization logic, such as downloading NLTK data using Python.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/reference/bentoml/bento-build-options.rst#_snippet_43
+
+LANGUAGE: toml
+CODE:
+```
+[tool.bentoml.build.python]
+packages = ["nltk"]
+[tool.bentoml.build.docker]
+setup_script = "./setup.py"
+```
+
+----------------------------------------
+
+TITLE: Configuring NLTK Data Download with Python Setup Script (bentofile.yaml)
+DESCRIPTION: This YAML configuration for `bentofile.yaml` specifies the installation of the `nltk` Python package and the execution of a `setup.py` script during the Docker image build. This enables custom initialization logic, such as downloading NLTK data using a Python script.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/reference/bentoml/bento-build-options.rst#_snippet_44
+
+LANGUAGE: yaml
+CODE:
+```
+python:
+  packages:
+    - "nltk"
+docker:
+  setup_script: "./setup.py"
+```
+
+----------------------------------------
+
+TITLE: Configuring NLTK Data Download with Bash Setup Script (pyproject.toml)
+DESCRIPTION: This TOML configuration for `pyproject.toml` specifies that the `nltk` Python package should be installed and a `setup.sh` script should be executed during the Docker image build process. This allows for pre-downloading NLTK data, which is useful for NLP projects.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/reference/bentoml/bento-build-options.rst#_snippet_40
+
+LANGUAGE: toml
+CODE:
+```
+[tool.bentoml.build.python]
+packages = ["nltk"]
+[tool.bentoml.build.docker]
+setup_script = "./setup.sh"
+```
+
+----------------------------------------
+
+TITLE: Configuring NLTK Data Download with Bash Setup Script (bentofile.yaml)
+DESCRIPTION: This YAML configuration for `bentofile.yaml` specifies that the `nltk` Python package should be installed and a `setup.sh` script should be executed during the Docker image build process. This enables pre-downloading NLTK data, which is beneficial for NLP applications.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/reference/bentoml/bento-build-options.rst#_snippet_41
+
+LANGUAGE: yaml
+CODE:
+```
+python:
+  packages:
+    - "nltk"
+docker:
+  setup_script: "./setup.sh"
+```
+
+----------------------------------------
+
+TITLE: Cloning Project Repository (Bash)
+DESCRIPTION: This snippet provides the commands to clone the BentoML quickstart project repository from GitHub and then navigate into the newly cloned directory. This is the first step to set up the project environment locally.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/get-started/hello-world.rst#_snippet_0
+
+LANGUAGE: bash
+CODE:
+```
+git clone https://github.com/bentoml/quickstart.git
+cd quickstart
+```
+
+----------------------------------------
+
+TITLE: Watching Documentation for Changes (Make)
+DESCRIPTION: This Make command is an alternative way to start the live-reloading documentation server, similar to `sphinx-autobuild`. It simplifies the command for users with `make` installed.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/README.md#_snippet_7
+
+LANGUAGE: bash
+CODE:
+```
+make watch-docs
+```
+
+----------------------------------------
+
+TITLE: Installing BentoML and Model Dependencies (Bash)
+DESCRIPTION: This command installs the necessary Python packages: `bentoml` for serving, `torch` as a deep learning framework, and `transformers` for the Hugging Face model. These are crucial dependencies for running the text summarization service.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/get-started/hello-world.rst#_snippet_3
+
+LANGUAGE: bash
+CODE:
+```
+# Recommend Python 3.11
+pip install bentoml torch transformers
+```
+
+----------------------------------------
+
+TITLE: Cloning BentoML XGBoost Example Repository (Bash)
+DESCRIPTION: This bash snippet instructs on how to obtain the example project source code. It clones the `BentoXGBoost` GitHub repository and then navigates into the newly created project directory.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/examples/xgboost.rst#_snippet_9
+
+LANGUAGE: bash
+CODE:
+```
+git clone https://github.com/bentoml/BentoXGBoost.git
+cd BentoXGBoost
+```
+
+----------------------------------------
+
+TITLE: Deploying BentoML Service to BentoCloud
+DESCRIPTION: This command deploys the BentoML Service from the current directory to BentoCloud. It automates the process of packaging and deploying the application, making it available for production use after logging into BentoCloud.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/tests/e2e/fixtures/quickstart/README.md#_snippet_2
+
+LANGUAGE: bash
+CODE:
+```
+bentoml deploy .
+```
+
+----------------------------------------
+
+TITLE: Creating and Activating Virtual Environment (Mac/Linux Bash)
+DESCRIPTION: These commands create a new Python virtual environment named 'quickstart' using `python3 -m venv` and then activate it using the `source` command. This isolates project dependencies on Mac/Linux systems.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/get-started/hello-world.rst#_snippet_1
+
+LANGUAGE: bash
+CODE:
+```
+python3 -m venv quickstart
+source quickstart/bin/activate
+```
+
+----------------------------------------
+
+TITLE: Installing Development Dependencies with PDM
+DESCRIPTION: This command uses PDM (Python Development Master) to install all development dependencies specified in the project's configuration. This ensures that the environment is set up correctly for running tests and other development tasks.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/DEVELOPMENT.md#_snippet_21
+
+LANGUAGE: bash
+CODE:
+```
+pdm install
+```
+
+----------------------------------------
+
+TITLE: Serving BentoML Service with Custom Configuration File
+DESCRIPTION: This bash command shows how to start a BentoML service using a custom configuration file, `deployment.yaml`. The `BENTOML_CONFIG` environment variable is set to specify the path to the desired configuration, overriding default settings.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/tests/monitoring/task_classification/README.md#_snippet_8
+
+LANGUAGE: bash
+CODE:
+```
+BENTOML_CONFIG=deployment.yaml bentoml serve service.py:svc
+```
+
+----------------------------------------
+
+TITLE: Setting Up BentoMLflow Project and Dependencies (Bash)
+DESCRIPTION: This snippet provides the initial setup for the BentoMLflow project. It clones the repository from GitHub, changes the current directory into the cloned project, and installs essential Python packages (bentoml, mlflow, scikit-learn) using pip. Python 3.11 is recommended for optimal compatibility.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/examples/mlflow.rst#_snippet_17
+
+LANGUAGE: bash
+CODE:
+```
+git clone https://github.com/bentoml/BentoMLflow.git
+cd BentoMLflow
+
+# Recommend Python 3.11
+pip install bentoml mlflow scikit-learn
+```
+
+----------------------------------------
+
+TITLE: Installing Dependencies and Logging into BentoCloud (Bash)
+DESCRIPTION: This snippet provides bash commands to set up the development environment. It installs necessary Python packages like `bentoml`, `xgboost`, and `scikit-learn` using pip, and then logs the user into BentoCloud via the BentoML CLI for cloud operations.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/examples/xgboost.rst#_snippet_8
+
+LANGUAGE: bash
+CODE:
+```
+pip install bentoml xgboost scikit-learn
+
+bentoml cloud login
+```
+
+----------------------------------------
+
+TITLE: Verifying BentoML Installation via Python (Python)
+DESCRIPTION: This Python snippet imports the BentoML library and prints its version. It's an alternative method to verify the installation, particularly useful for confirming accessibility within a Python environment.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/DEVELOPMENT.md#_snippet_5
+
+LANGUAGE: python
+CODE:
+```
+import bentoml
+print(bentoml.__version__)
+```
+
+----------------------------------------
+
+TITLE: Creating and Activating Virtual Environment (Windows Bash)
+DESCRIPTION: These commands create a new Python virtual environment named 'quickstart' using `python -m venv` and then activate it using the script in the `Scripts` directory. This isolates project dependencies on Windows systems.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/get-started/hello-world.rst#_snippet_2
+
+LANGUAGE: bash
+CODE:
+```
+python -m venv quickstart
+quickstart\Scripts\activate
+```
+
+----------------------------------------
+
+TITLE: Installing System-Level Dependencies in BentoML Image (Python)
+DESCRIPTION: This example demonstrates how to install system-level packages (e.g., `curl`, `git`) into the BentoML image's runtime environment using the `.system_packages()` method. This is essential for dependencies not managed by pip.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/build-with-bentoml/runtime-environment.rst#_snippet_10
+
+LANGUAGE: Python
+CODE:
+```
+import bentoml
+
+image = bentoml.images.Image(python_version='3.11') \
+    .system_packages("curl", "git")
+```
+
+----------------------------------------
+
+TITLE: Installing Documentation Dependencies (PDM)
+DESCRIPTION: This command uses PDM to install all necessary dependencies for building the BentoML documentation, primarily Sphinx and its extensions. Ensure PDM is installed before running this command.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/README.md#_snippet_1
+
+LANGUAGE: bash
+CODE:
+```
+pdm install -dG docs
+```
+
+----------------------------------------
+
+TITLE: Verifying BentoML Installation via CLI (Bash)
+DESCRIPTION: This command checks the installed version of BentoML using its command-line interface. It's a quick way to confirm that BentoML has been successfully installed and is accessible from your terminal.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/DEVELOPMENT.md#_snippet_4
+
+LANGUAGE: bash
+CODE:
+```
+bentoml --version
+```
+
+----------------------------------------
+
+TITLE: Serving BentoML Service Locally (Bash)
+DESCRIPTION: This command initiates the BentoML server, which hosts the `Summarization` service. It starts a production HTTP server, making the service accessible locally at `http://localhost:3000`. The output shows the server's startup logs and the address where the service is listening.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/get-started/hello-world.rst#_snippet_5
+
+LANGUAGE: bash
+CODE:
+```
+$ bentoml serve
+
+2024-02-02T07:16:14+0000 [WARNING] [cli] Converting 'Summarization' to lowercase: 'summarization'.
+2024-02-02T07:16:15+0000 [INFO] [cli] Starting production HTTP BentoServer from "service:Summarization" listening on http://localhost:3000 (Press CTRL+C to quit)
+```
+
+----------------------------------------
+
+TITLE: Installing comfy-pack via Git for ComfyUI
+DESCRIPTION: This bash command sequence outlines the manual installation process for `comfy-pack`. It instructs users to navigate into the `ComfyUI/custom_nodes` directory and then clone the `comfy-pack` GitHub repository, integrating the toolkit directly into the ComfyUI environment.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/examples/comfyui.rst#_snippet_0
+
+LANGUAGE: bash
+CODE:
+```
+cd ComfyUI/custom_nodes
+git clone https://github.com/bentoml/comfy-pack.git
+```
+
+----------------------------------------
+
+TITLE: Installing BentoML and Logging into BentoCloud (Bash)
+DESCRIPTION: These Bash commands provide instructions for setting up the BentoML environment. It covers installing the BentoML library via pip and then authenticating with BentoCloud using the BentoML command-line interface.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/examples/function-calling.rst#_snippet_8
+
+LANGUAGE: Bash
+CODE:
+```
+pip install bentoml
+bentoml cloud login
+```
+
+----------------------------------------
+
+TITLE: Installing BentoML and Logging into BentoCloud (Bash)
+DESCRIPTION: This command-line snippet installs the BentoML library using pip and then initiates the login process for BentoCloud via the BentoML CLI. This is a prerequisite step for deploying BentoML projects to BentoCloud.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/examples/controlnet.rst#_snippet_5
+
+LANGUAGE: bash
+CODE:
+```
+pip install bentoml
+bentoml cloud login
+```
+
+----------------------------------------
+
+TITLE: Chaining Custom Commands and Package Installations in BentoML Image (Python)
+DESCRIPTION: This snippet illustrates how to chain the `.run()` method with other methods like `.system_packages()` and `.python_packages()` to execute custom commands at specific stages of the BentoML image build process. This allows for fine-grained control over the build environment setup.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/build-with-bentoml/runtime-environment.rst#_snippet_11
+
+LANGUAGE: Python
+CODE:
+```
+import bentoml
+
+image = bentoml.images.Image(python_version='3.11') \
+    .run('echo "Starting build process..."') \
+    .system_packages("curl", "git") \
+    .run('echo "System packages installed"') \
+    .python_packages("pillow", "fastapi") \
+    .run('echo "Python packages installed"')
+```
+
+----------------------------------------
+
+TITLE: Example BentoML Deployment Configuration File (YAML)
+DESCRIPTION: This YAML snippet provides an example configuration file for a BentoML deployment. It defines the deployment name, bento path, enables access authorization, sets global environment variables, and configures specific services with instance types, scaling parameters, and deployment strategies.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/scale-with-bentocloud/deployment/configure-deployments.rst#_snippet_9
+
+LANGUAGE: yaml
+CODE:
+```
+name: "my-deployment-name"
+bento: .
+access_authorization: true # Setting it to `true` means you need an API token with Protected Endpoint Access to access the exposed endpoint.
+envs: # Set global environment variables
+  - name: ENV_VAR_NAME
+    value: env_var_value
+services:
+    MyBentoService: # Your Service name
+      instance_type: "cpu.2" # The instance type name on BentoCloud
+      scaling: # Set the max and min replicas for scaling
+        min_replicas: 1
+        max_replicas: 3
+      deployment_strategy: "Recreate"
+    # Add another Service below if you have more
+```
+
+----------------------------------------
+
+TITLE: Cloning the BentoShield Project Repository (Bash)
+DESCRIPTION: This snippet clones the BentoShield example project repository from GitHub and navigates into its directory. This is the initial step to get the project files locally.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/examples/shieldgemma.rst#_snippet_7
+
+LANGUAGE: bash
+CODE:
+```
+git clone https://github.com/bentoml/BentoShield.git
+cd BentoShield
+```
+
+----------------------------------------
+
+TITLE: Containerizing BentoML Service into Docker Image
+DESCRIPTION: This command converts a built Bento into a Docker image, bundling all necessary components for production deployment. It requires Docker to be installed and running on the system.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/tests/monitoring/task_classification/README.md#_snippet_11
+
+LANGUAGE: Bash
+CODE:
+```
+bentoml containerize iris_classifier:latest
+```
+
+----------------------------------------
+
+TITLE: Previewing Generated Documentation Locally (Python)
+DESCRIPTION: This Python command starts a simple HTTP server to preview the locally generated documentation HTML files. The server serves content from the `docs/build/html` directory on port 8000.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/README.md#_snippet_3
+
+LANGUAGE: bash
+CODE:
+```
+python -m http.server 8000 -d docs/build/html
+```
+
+----------------------------------------
+
+TITLE: Starting Live-Reloading Documentation Server (Sphinx-Autobuild)
+DESCRIPTION: This command launches `sphinx-autobuild`, which provides a live-reloading server for documentation development. It automatically rebuilds and refreshes pages upon changes, enhancing productivity.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/README.md#_snippet_6
+
+LANGUAGE: bash
+CODE:
+```
+sphinx-autobuild docs/source docs/build/html
+```
+
+----------------------------------------
+
+TITLE: Installing Custom BentoML from GitHub Fork
+DESCRIPTION: This command installs a specific revision of BentoML directly from a GitHub fork using pip. It allows team members to easily use a custom or development version of BentoML by specifying the username and revision.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/DEVELOPMENT.md#_snippet_19
+
+LANGUAGE: bash
+CODE:
+```
+pip install git+https://github.com/{YOUR_GITHUB_USERNAME}/bentoml@{YOUR_REVISION}
+```
+
+----------------------------------------
+
+TITLE: Installing BentoML and Logging into BentoCloud (Bash)
+DESCRIPTION: This Bash snippet provides the commands to install the BentoML library via pip and then log into BentoCloud using the BentoML CLI. This is a prerequisite step for deploying any BentoML application to BentoCloud.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/examples/langgraph.rst#_snippet_8
+
+LANGUAGE: bash
+CODE:
+```
+pip install bentoml
+bentoml cloud login
+```
+
+----------------------------------------
+
+TITLE: Setting Example Values for API Input in BentoML
+DESCRIPTION: This example illustrates how to provide example values for API inputs using `pydantic.Field` within a BentoML Service. It specifically shows setting an example for a `numpy.ndarray` input, which helps in generating better API documentation and client-side examples.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/build-with-bentoml/iotypes.rst#_snippet_1
+
+LANGUAGE: python
+CODE:
+```
+from pydantic import Field
+import bentoml
+
+@bentoml.service
+class IrisClassifier:
+    @bentoml.api
+    def classify(self, input: np.ndarray = Field(examples=[[0.1, 0.4, 0.2, 1.0]])) -> np.ndarray:
+        ...
+```
+
+----------------------------------------
+
+TITLE: Installing BentoML and Dev Dependencies with PDM (Bash)
+DESCRIPTION: This command installs BentoML in editable mode along with all its development dependencies using PDM, a modern Python package manager. It also sets up pre-commit hooks to enforce code quality standards.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/DEVELOPMENT.md#_snippet_3
+
+LANGUAGE: bash
+CODE:
+```
+pdm install -G all
+pre-commit install
+```
+
+----------------------------------------
+
+TITLE: Preparing Project for Local Serving (Bash)
+DESCRIPTION: This snippet outlines the initial steps for local serving: cloning the project repository and installing its Python dependencies from requirements.txt. This prepares the environment for running the BentoML service locally.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/examples/shieldgemma.rst#_snippet_13
+
+LANGUAGE: bash
+CODE:
+```
+git clone https://github.com/bentoml/BentoShield.git
+cd BentoShield
+
+# Recommend Python 3.11
+pip install -r requirements.txt
+```
+
+----------------------------------------
+
+TITLE: Running BentoML Docker Container Locally with Monitoring
+DESCRIPTION: This command starts a Docker container from the previously built image, mapping port 3000 for HTTP access and mounting a local directory for monitoring data. This allows for local testing and observation of the deployed service.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/tests/monitoring/task_classification/README.md#_snippet_12
+
+LANGUAGE: Bash
+CODE:
+```
+docker run -p 3000:3000 iris_classifier:invwzzsw7li6zckb2ie5eubhd --mount type=bind,source=<your directory>,target=/bento/monitoring
+```
+
+----------------------------------------
+
+TITLE: Defining Arguments in Python Docstrings (Google Style)
+DESCRIPTION: Provides an example of how to document function arguments in a Python docstring following Google's style guide. It shows the `Args:` prefix, argument name, type, and description, including cross-references.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/README.md#_snippet_21
+
+LANGUAGE: markdown
+CODE:
+```
+    Args:
+        bento_name (:code:`str`):
+            :class:`~bentoml.BentoService` identifier with name format :obj:`NAME:VERSION`.
+            ``NAME`` can be accessed via :meth:`~bentoml.BentoService.name` and ``VERSION`` can
+            be accessed via :meth:`~bentoml.BentoService.version`
+```
+
+----------------------------------------
+
+TITLE: Cloning Repository and Installing Python Dependencies
+DESCRIPTION: This snippet provides commands to clone the 'BentoDiffusion' GitHub repository, navigate into the 'controlnet' project directory, and install the required Python dependencies using 'pip'. This is a prerequisite step for local serving or development of the project, with Python 3.11 recommended.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/examples/controlnet.rst#_snippet_11
+
+LANGUAGE: bash
+CODE:
+```
+git clone https://github.com/bentoml/BentoDiffusion.git
+cd BentoDiffusion/controlnet
+
+# Recommend Python 3.11
+pip install -r requirements.txt
+```
+
+----------------------------------------
+
+TITLE: Cloning Project and Installing Dependencies
+DESCRIPTION: This snippet provides commands to clone the BentoXGBoost project repository from GitHub, navigate into its directory, and install the necessary Python dependencies using pip, including bentoml, xgboost, and scikit-learn.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/examples/xgboost.rst#_snippet_16
+
+LANGUAGE: bash
+CODE:
+```
+git clone https://github.com/bentoml/BentoXGBoost.git
+cd BentoXGBoost
+
+# Recommend Python 3.11
+pip install bentoml xgboost scikit-learn
+```
+
+----------------------------------------
+
+TITLE: Specifying CloudFormation Template URL for BentoCloud IAM Role Setup
+DESCRIPTION: This snippet provides the Amazon S3 URL for the CloudFormation template used to create the necessary IAM Role for BentoCloud. This template defines the permissions BentoCloud requires to deploy and manage resources within the AWS environment. Users paste this URL into the AWS CloudFormation console during stack creation to initiate the setup process.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/scale-with-bentocloud/administering/bring-your-own-cloud/aws.rst#_snippet_0
+
+LANGUAGE: bash
+CODE:
+```
+https://customer-helpdesk.s3.us-west-1.amazonaws.com/create-bentocloud-copilot-role-v6.json
+```
+
+----------------------------------------
+
+TITLE: Installing BentoML with pip (Bash)
+DESCRIPTION: This snippet demonstrates how to install the BentoML open-source model serving framework using pip. It is recommended to use Python 3.9 or newer for compatibility. This command installs the `bentoml` package from PyPI, making the framework available for use in your Python projects.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/index.rst#_snippet_0
+
+LANGUAGE: bash
+CODE:
+```
+# Recommend Python 3.9+
+pip install bentoml
+```
+
+----------------------------------------
+
+TITLE: Configuring Custom PyPI Index for BentoML Image (Python)
+DESCRIPTION: This example shows how to configure a custom PyPI index URL for installing Python packages within a BentoML image. It uses the `--index-url` option with `.python_packages()` to specify an alternative package source like PyTorch's CPU wheel index.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/build-with-bentoml/runtime-environment.rst#_snippet_6
+
+LANGUAGE: Python
+CODE:
+```
+import bentoml
+
+# Using custom PyPI index
+image = bentoml.images.Image(python_version='3.11') \
+    .python_packages(
+        "--index-url https://download.pytorch.org/whl/cpu",
+        "torch",
+        "torchvision",
+        "torchaudio"
+    )
+```
+
+----------------------------------------
+
+TITLE: Serving BentoML Service Locally with Reload
+DESCRIPTION: This command starts the BentoML service defined in `service.py` locally. The `--reload` flag enables automatic reloading of the service when changes are detected in the source file, which is useful for development.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/tests/monitoring/task_classification/README.md#_snippet_3
+
+LANGUAGE: bash
+CODE:
+```
+bentoml serve service.py:svc --reload
+```
+
+----------------------------------------
+
+TITLE: Cloning Project and Installing Dependencies (Bash)
+DESCRIPTION: This sequence of commands clones the BentoFunctionCalling project repository from GitHub, navigates into the project directory, and then installs all required Python dependencies listed in `requirements.txt`. Python 3.11 is recommended for this project.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/examples/function-calling.rst#_snippet_15
+
+LANGUAGE: bash
+CODE:
+```
+git clone https://github.com/bentoml/BentoFunctionCalling.git
+        cd BentoFunctionCalling
+
+        # Recommend Python 3.11
+        pip install -r requirements.txt
+```
+
+----------------------------------------
+
+TITLE: Installing FastAPI and Gradio
+DESCRIPTION: This command installs the necessary Python packages, FastAPI and Gradio, which are prerequisites for integrating Gradio UIs with BentoML services.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/build-with-bentoml/gradio.rst#_snippet_0
+
+LANGUAGE: bash
+CODE:
+```
+pip install fastapi gradio
+```
+
+----------------------------------------
+
+TITLE: Starting Prometheus with Custom Configuration
+DESCRIPTION: This bash command initiates the Prometheus server, specifying the path to a custom configuration file (`prometheus.yml`) that defines scrape jobs and other settings for monitoring.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/build-with-bentoml/observability/metrics.rst#_snippet_14
+
+LANGUAGE: bash
+CODE:
+```
+./prometheus --config.file=/path/to/the/file/prometheus.yml
+```
+
+----------------------------------------
+
+TITLE: Building BentoML Service
+DESCRIPTION: This command initiates the Bento build process from the current directory, packaging the service, models, and dependencies into a Bento. The output confirms the successful creation of a Bento with a unique tag, ready for deployment.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/tests/monitoring/task_classification/README.md#_snippet_10
+
+LANGUAGE: Bash
+CODE:
+```
+bentoml build
+```
+
+----------------------------------------
+
+TITLE: Configuring Pip Install Options in pyproject.toml
+DESCRIPTION: This snippet demonstrates how to specify various pip install arguments and PyPI mirror settings within the `[tool.bentoml.build.python]` section of `pyproject.toml`. It includes `requirements_txt`, `index_url`, `no_index`, `trusted_host`, `find_links`, `extra_index_url`, and `pip_args` for fine-grained control over package installation.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/reference/bentoml/bento-build-options.rst#_snippet_26
+
+LANGUAGE: TOML
+CODE:
+```
+[tool.bentoml.build.python]
+requirements_txt = "./requirements.txt"
+index_url = "https://my.mirror.com/simple"
+no_index = false
+trusted_host = ["pypi.python.org", "my.mirror.com"]
+find_links = ["https://download.pytorch.org/whl/cu80/stable.html"]
+extra_index_url = [
+    "https://<other api token>:@my.mirror.com/pypi/simple",
+    "https://pypi.python.org/simple"
+]
+pip_args = "--pre -U --force-reinstall"
+```
+
+----------------------------------------
+
+TITLE: Configuring BentoML Project with Custom Distribution (bentofile.yaml)
+DESCRIPTION: This YAML configuration snippet for `bentofile.yaml` defines a BentoML service, includes Python files, specifies Python package dependencies (pandas), and crucially, forces the installation of a custom BentoML distribution from a GitHub fork. It also lists system packages required for the Docker image.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/DEVELOPMENT.md#_snippet_20
+
+LANGUAGE: yaml
+CODE:
+```
+service: 'service:svc'
+description: 'file: ./README.md'
+include:
+  - '*.py'
+python:
+  packages:
+    - pandas
+    - git+https://github.com/{YOUR_GITHUB_USERNAME}/bentoml@{YOUR_REVISION}
+docker:
+  system_packages:
+    - git
+```
+
+----------------------------------------
+
+TITLE: Serving a BentoML Service with Gradio UI
+DESCRIPTION: This bash command starts the BentoML Service, making both its API endpoints and the mounted Gradio UI accessible. Users can interact with the summarization model through the web UI at `/ui` or directly via the API endpoint.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/build-with-bentoml/gradio.rst#_snippet_5
+
+LANGUAGE: bash
+CODE:
+```
+bentoml serve
+```
+
+----------------------------------------
+
+TITLE: Cloning and Deploying BentoML Project to BentoCloud (Bash)
+DESCRIPTION: This sequence of bash commands first clones the `BentoDiffusion` GitHub repository, then navigates into the `controlnet` example directory. Finally, it uses `bentoml deploy` to deploy the project to BentoCloud, packaging and serving the defined BentoML service.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/examples/controlnet.rst#_snippet_6
+
+LANGUAGE: bash
+CODE:
+```
+git clone https://github.com/bentoml/BentoDiffusion.git
+cd BentoDiffusion/controlnet
+bentoml deploy
+```
+
+----------------------------------------
+
+TITLE: Serving BentoML Application Locally (Bash)
+DESCRIPTION: This snippet demonstrates how to start a BentoML application locally using the `bentoml serve` command. This command makes the application accessible via HTTP requests, typically at `http://localhost:3000`. A notable prerequisite for running the `Ministral-8B-Instruct-2410` project locally is an NVIDIA GPU with at least 16GB of VRAM.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/examples/langgraph.rst#_snippet_17
+
+LANGUAGE: bash
+CODE:
+```
+bentoml serve
+```
+
+----------------------------------------
+
+TITLE: Installing Spellchecker Dependencies (Make)
+DESCRIPTION: This command installs the necessary dependencies for the documentation spellchecker. It's a prerequisite for running the spellcheck locally.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/README.md#_snippet_4
+
+LANGUAGE: bash
+CODE:
+```
+make install-spellchecker-deps
+```
+
+----------------------------------------
+
+TITLE: Cloning Repository and Installing Dependencies for Local Serving (Bash)
+DESCRIPTION: This snippet provides commands to clone a specific BentoML project repository (`BentoDiffusion`), navigate into a sub-project (`sdxl-turbo`), and install its Python dependencies using `pip`. This is a prerequisite step for local serving.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/examples/sdxl-turbo.rst#_snippet_11
+
+LANGUAGE: bash
+CODE:
+```
+git clone https://github.com/bentoml/BentoDiffusion.git
+cd BentoDiffusion/sdxl-turbo
+
+# Recommend Python 3.11
+pip install -r requirements.txt
+```
+
+----------------------------------------
+
+TITLE: Defining Example Code Blocks in Python Docstrings
+DESCRIPTION: Explains how to include a multi-line code example within a Python docstring using the `Example::` prefix followed by an indented code block, often used for `doctest`.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/README.md#_snippet_24
+
+LANGUAGE: markdown
+CODE:
+```
+Example::
+
+    # example code here
+    # ...
+```
+
+----------------------------------------
+
+TITLE: Installing BentoML and Logging into BentoCloud (Bash)
+DESCRIPTION: This snippet provides the command-line instructions to install the BentoML library using `pip` and then log into BentoCloud via the `bentoml cloud login` command. These are essential first steps for users who wish to deploy their BentoML services to BentoCloud.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/examples/vllm.rst#_snippet_7
+
+LANGUAGE: bash
+CODE:
+```
+pip install bentoml
+bentoml cloud login
+```
+
+----------------------------------------
+
+TITLE: Example JSON Integer Output
+DESCRIPTION: This is an example of an integer value returned as `application/json`.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/build-with-bentoml/iotypes.rst#_snippet_30
+
+LANGUAGE: JSON
+CODE:
+```
+3
+```
+
+----------------------------------------
+
+TITLE: Example JSON Object Output
+DESCRIPTION: This is an example of an empty JSON object returned as `application/json`.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/build-with-bentoml/iotypes.rst#_snippet_32
+
+LANGUAGE: JSON
+CODE:
+```
+{}
+```
+
+----------------------------------------
+
+TITLE: Configuring Pip Install Options in bentofile.yaml
+DESCRIPTION: This snippet illustrates how to define pip install arguments and PyPI mirror settings under the `python` field in `bentofile.yaml`. It covers `requirements_txt`, `index_url`, `no_index`, `trusted_host`, `find_links`, `extra_index_url`, and `pip_args` to customize package installation behavior for BentoML builds.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/reference/bentoml/bento-build-options.rst#_snippet_27
+
+LANGUAGE: YAML
+CODE:
+```
+python:
+  requirements_txt: "./requirements.txt"
+  index_url: "https://my.mirror.com/simple"
+  no_index: false
+  trusted_host:
+    - "pypi.python.org"
+    - "my.mirror.com"
+  find_links:
+    - "https://download.pytorch.org/whl/cu80/stable.html"
+  extra_index_url:
+    - "https://<other api token>:@my.mirror.com/pypi/simple"
+    - "https://pypi.python.org/simple"
+  pip_args: "--pre -U --force-reinstall"
+```
+
+----------------------------------------
+
+TITLE: Installing BentoML CLI
+DESCRIPTION: This command installs the BentoML library, which includes the command-line interface (CLI) necessary for interacting with BentoCloud. It is a prerequisite for logging in and deploying services.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/get-started/cloud-deployment.rst#_snippet_0
+
+LANGUAGE: bash
+CODE:
+```
+pip install bentoml
+```
+
+----------------------------------------
+
+TITLE: Installing BentoML and Logging into BentoCloud (Bash)
+DESCRIPTION: This bash snippet provides commands to install the BentoML library using pip and then log into BentoCloud via the BentoML CLI. This is a prerequisite for deploying services to BentoCloud and managing API tokens.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/examples/sdxl-turbo.rst#_snippet_5
+
+LANGUAGE: bash
+CODE:
+```
+pip install bentoml
+bentoml cloud login
+```
+
+----------------------------------------
+
+TITLE: Serving a BentoML Service Locally (Bash)
+DESCRIPTION: This command starts a local model server for the BentoML Service defined in `service.py`. It exposes the API endpoints for testing and development, making the service accessible at `http://localhost:3000/` by default.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/build-with-bentoml/services.rst#_snippet_1
+
+LANGUAGE: bash
+CODE:
+```
+bentoml serve
+```
+
+----------------------------------------
+
+TITLE: Installing Python Packages with Version Constraints in BentoML
+DESCRIPTION: This snippet demonstrates using the `python_packages()` method to install various Python dependencies, including specific versions, version constraints (e.g., `>=`), and direct installation from a Git repository. It shows how to define a list of packages for the BentoML runtime environment.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/build-with-bentoml/runtime-environment.rst#_snippet_2
+
+LANGUAGE: python
+CODE:
+```
+import bentoml
+
+image = bentoml.images.Image(python_version='3.11') \
+    .python_packages(
+        "numpy>=1.20.0",
+        "pandas",
+        "scikit-learn==1.2.0",
+        "git+https://github.com/username/mylib.git@main"
+    )
+```
+
+----------------------------------------
+
+TITLE: Installing Local Dependencies for BentoML Service
+DESCRIPTION: This command installs the `torch` and `transformers` Python packages, which are additional dependencies required for running the `Summarization` service locally. These packages are necessary for the Hugging Face summarization pipeline to function correctly.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/README.md#_snippet_2
+
+LANGUAGE: Bash
+CODE:
+```
+pip install torch transformers
+```
+
+----------------------------------------
+
+TITLE: Example JSON Array Output
+DESCRIPTION: This is an example of an empty JSON array returned as `application/json`.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/build-with-bentoml/iotypes.rst#_snippet_33
+
+LANGUAGE: JSON
+CODE:
+```
+[]
+```
+
+----------------------------------------
+
+TITLE: Installing Prometheus Python Client (Bash)
+DESCRIPTION: This command installs the `prometheus-client` Python package, which is a necessary prerequisite for defining and utilizing custom Prometheus metrics within BentoML services.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/build-with-bentoml/observability/metrics.rst#_snippet_4
+
+LANGUAGE: Bash
+CODE:
+```
+pip install prometheus-client
+```
+
+----------------------------------------
+
+TITLE: Deploying BentoML to BentoCloud via CLI
+DESCRIPTION: This snippet demonstrates the essential `bentoml` CLI commands for authenticating with BentoCloud and deploying a BentoML project. Users first log in with an API token, then initiate deployment from their current project directory, streamlining the process of getting AI services into production.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/README.md#_snippet_8
+
+LANGUAGE: bash
+CODE:
+```
+bentoml cloud login
+
+bentoml deploy
+```
+
+----------------------------------------
+
+TITLE: Installing Zipkin Tracing Dependency - Bash
+DESCRIPTION: Installs the necessary Python package for integrating Zipkin tracing with BentoML services. This command adds the `tracing-zipkin` extra to the `bentoml` installation, enabling Zipkin exporter functionality.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/build-with-bentoml/observability/tracing.rst#_snippet_0
+
+LANGUAGE: bash
+CODE:
+```
+pip install "bentoml[tracing-zipkin]"
+```
+
+----------------------------------------
+
+TITLE: Cloning MLflow Example Repository (Bash)
+DESCRIPTION: This snippet shows the bash commands to clone the BentoMLflow example repository from GitHub and then change the current directory into the newly cloned repository, preparing the environment for further steps.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/examples/mlflow.rst#_snippet_10
+
+LANGUAGE: bash
+CODE:
+```
+git clone https://github.com/bentoml/BentoMLflow.git
+cd BentoMLflow
+```
+
+----------------------------------------
+
+TITLE: Example JSON Float Output
+DESCRIPTION: This is an example of a float value returned as `application/json`.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/build-with-bentoml/iotypes.rst#_snippet_31
+
+LANGUAGE: JSON
+CODE:
+```
+1.1
+```
+
+----------------------------------------
+
+TITLE: Cloning Protocol Buffers Repository (Bash)
+DESCRIPTION: This snippet demonstrates how to create a thirdparty directory and then clone the official protocolbuffers/protobuf repository. The --depth 1 option ensures only the latest commit is fetched, reducing repository size, which is useful for obtaining standard .proto files like those under src/google/protobuf.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/build-with-bentoml/snippets/grpc/additional_setup.rst#_snippet_0
+
+LANGUAGE: bash
+CODE:
+```
+mkdir -p thirdparty && cd thirdparty
+git clone --depth 1 https://github.com/protocolbuffers/protobuf.git
+```
+
+----------------------------------------
+
+TITLE: Installing E2E Test Requirements (Bash)
+DESCRIPTION: This bash command installs the necessary Python dependencies for the new end-to-end test suite. It uses `pip install -r` to read and install packages listed in the `requirements.txt` file located within the specific test suite directory.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/tests/e2e/README.md#_snippet_3
+
+LANGUAGE: bash
+CODE:
+```
+pip install -r tests/e2e/qa/requirements.txt
+```
+
+----------------------------------------
+
+TITLE: Deploying LangGraph Anthropic Agent to BentoCloud (Bash)
+DESCRIPTION: This Bash snippet demonstrates how to navigate to the LangGraph Anthropic example directory, create a BentoCloud secret for the Anthropic API key, and deploy the application to BentoCloud using the `bentoml deploy` command.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/examples/langgraph.rst#_snippet_11
+
+LANGUAGE: bash
+CODE:
+```
+# Use Claude 3.5 Sonnet
+cd BentoLangGraph/langgraph-anthropic
+bentoml secret create anthropic ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY
+bentoml deploy --secret anthropic
+```
+
+----------------------------------------
+
+TITLE: Installing OTLP Tracing Dependency - Bash
+DESCRIPTION: Installs the necessary Python package for integrating OpenTelemetry Protocol (OTLP) tracing with BentoML services. This command adds the `tracing-otlp` extra to the `bentoml` installation, enabling OTLP exporter functionality.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/build-with-bentoml/observability/tracing.rst#_snippet_2
+
+LANGUAGE: bash
+CODE:
+```
+pip install "bentoml[tracing-otlp]"
+```
+
+----------------------------------------
+
+TITLE: Installing BentoML Python Package
+DESCRIPTION: This command installs the BentoML library using pip. It specifies that Python 3.9 or newer is required. The `-U` flag ensures that the package is upgraded if already installed, providing the latest version.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/README.md#_snippet_0
+
+LANGUAGE: Bash
+CODE:
+```
+pip install -U bentoml
+```
+
+----------------------------------------
+
+TITLE: Installing BentoML and Logging into BentoCloud (Bash)
+DESCRIPTION: This snippet installs the BentoML library using pip and then logs the user into their BentoCloud account via the BentoML CLI. This is a prerequisite for deploying applications to BentoCloud.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/examples/shieldgemma.rst#_snippet_6
+
+LANGUAGE: bash
+CODE:
+```
+pip install bentoml
+bentoml cloud login
+```
+
+----------------------------------------
+
+TITLE: Installing Jaeger Tracing Dependency - Bash
+DESCRIPTION: Installs the necessary Python package for integrating Jaeger tracing with BentoML services. This command adds the `tracing-jaeger` extra to the `bentoml` installation, enabling Jaeger exporter functionality.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/build-with-bentoml/observability/tracing.rst#_snippet_1
+
+LANGUAGE: bash
+CODE:
+```
+pip install "bentoml[tracing-jaeger]"
+```
+
+----------------------------------------
+
+TITLE: Running a BentoML Service Locally (Bash)
+DESCRIPTION: This command is used to serve a BentoML service locally. It starts the service, making its APIs accessible for testing and interaction. This is a fundamental step for deploying and testing BentoML applications.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/build-with-bentoml/observability/metrics.rst#_snippet_11
+
+LANGUAGE: bash
+CODE:
+```
+bentoml serve
+```
+
+----------------------------------------
+
+TITLE: Cloning BentoLangGraph Repository (Bash)
+DESCRIPTION: This Bash command clones the BentoLangGraph example project repository from GitHub. This repository contains various LangGraph agent implementations that can be deployed with BentoML.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/examples/langgraph.rst#_snippet_9
+
+LANGUAGE: bash
+CODE:
+```
+git clone https://github.com/bentoml/BentoLangGraph.git
+```
+
+----------------------------------------
+
+TITLE: Initializing BentoML Image with Constructor Parameters
+DESCRIPTION: This example illustrates how to initialize `bentoml.images.Image` instances using various constructor parameters. It shows setting a specific Python version and Linux distribution (`alpine`), and separately, defining a custom Docker base image while disabling Python package version locking.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/build-with-bentoml/runtime-environment.rst#_snippet_1
+
+LANGUAGE: python
+CODE:
+```
+import bentoml
+
+# Specify Python version and distro
+image_two = bentoml.images.Image(python_version='3.11', distro='alpine')
+
+# Specify a custom base image and disable version locking
+image_one = bentoml.images.Image(base_image="python:3.11-slim-buster", lock_python_packages=False)
+```
+
+----------------------------------------
+
+TITLE: Setting GCP Project ID - Bash
+DESCRIPTION: This command sets the GCP project ID as an environment variable. This variable is crucial for the subsequent setup script to correctly identify and configure resources within your specific Google Cloud project. Replace '<project id>' with your actual GCP project ID.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/scale-with-bentocloud/administering/bring-your-own-cloud/gcp.rst#_snippet_0
+
+LANGUAGE: bash
+CODE:
+```
+export PROJECT=<project id>
+```
+
+----------------------------------------
+
+TITLE: Installing Python Dependencies from requirements.txt in BentoML Image (Python)
+DESCRIPTION: This snippet shows how to install Python dependencies from a `requirements.txt` file using the `.requirements_file()` method. This provides an alternative to listing packages directly with `.python_packages()`.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/build-with-bentoml/runtime-environment.rst#_snippet_9
+
+LANGUAGE: Python
+CODE:
+```
+import bentoml
+
+image = bentoml.images.Image(python_version='3.11') \
+    .requirements_file("./path/to/requirements.txt")
+```
+
+----------------------------------------
+
+TITLE: Example JSON Tensor Output
+DESCRIPTION: This is an example of a JSON array representing a tensor, returned as `application/json`.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/build-with-bentoml/iotypes.rst#_snippet_37
+
+LANGUAGE: JSON
+CODE:
+```
+[[1, 1, 1, 1], [2, 2, 2, 2]]
+```
+
+----------------------------------------
+
+TITLE: Mounting Quart on a BentoML Summarization Service (Python)
+DESCRIPTION: This example demonstrates mounting a Quart application onto a BentoML `Summarization` service, showcasing a more practical integration. It initializes a Quart app with a `/hello` endpoint that accesses the service name, and defines a `Summarization` service with resource and traffic configurations. The Quart app is mounted at `/v1`, allowing both the custom Quart endpoint and the service's `summarize` API to be served together.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/build-with-bentoml/asgi.rst#_snippet_3
+
+LANGUAGE: python
+CODE:
+```
+from __future__ import annotations
+import bentoml
+from transformers import pipeline
+from quart import Quart
+
+EXAMPLE_INPUT = "Breaking News: In an astonishing turn of events, the small town of Willow Creek has been taken by storm as local resident Jerry Thompson's cat, Whiskers, performed what witnesses are calling a 'miraculous and gravity-defying leap.' Eyewitnesses report that Whiskers, an otherwise unremarkable tabby cat, jumped a record-breaking 20 feet into the air to catch a fly. The event, which took place in Thompson's backyard, is now being investigated by scientists for potential breaches in the laws of physics. Local authorities are considering a town festival to celebrate what is being hailed as 'The Leap of the Century."
+
+# Create a Quart app instance
+app = Quart(__name__)
+
+@app.get("/hello")
+async def hello_world():
+    service = bentoml.get_current_service()
+    # Add other logic here if needed
+    return f"Hello, {service.name}"
+
+@bentoml.service(
+    resources={"cpu": "2"},
+    traffic={"timeout": 10}
+)
+@bentoml.asgi_app(app, path="/v1")
+class Summarization:
+    def __init__(self) -> None:
+        self.pipeline = pipeline('summarization')
+
+    # Define a name attribute
+    name = "MyService"
+
+    # The original Service API endpoint for text summarization
+    @bentoml.api
+    def summarize(self, text: str = EXAMPLE_INPUT) -> str:
+        result = self.pipeline(text)
+        return result[0]['summary_text']
+```
+
+----------------------------------------
+
+TITLE: Installing Comfy-Pack CLI (Bash)
+DESCRIPTION: This Bash command installs the `comfy-pack` command-line interface tool. `comfy-pack` is essential for packaging and restoring ComfyUI workspaces, enabling portability and consistent behavior across different environments. This is a prerequisite for using `comfy-pack`'s workspace management features.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/examples/comfyui.rst#_snippet_3
+
+LANGUAGE: bash
+CODE:
+```
+pip install comfy-pack
+```
+
+----------------------------------------
+
+TITLE: Example JSON Tabular Data Output
+DESCRIPTION: This is an example of a JSON array of objects representing tabular data, returned as `application/json`.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/build-with-bentoml/iotypes.rst#_snippet_39
+
+LANGUAGE: JSON
+CODE:
+```
+[{ "col1": 1, "col2": 2 }, { "col1": 1, "col2": 2 }]
+```
+
+----------------------------------------
+
+TITLE: Example Shell Script for Model Download (Bash)
+DESCRIPTION: This bash script demonstrates how to download a model from Hugging Face using `huggingface-cli` and save it to a local directory. It includes a shebang line, which is crucial for the build process to execute the script correctly.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/build-with-bentoml/runtime-environment.rst#_snippet_12
+
+LANGUAGE: Bash
+CODE:
+```
+#!/bin/bash
+huggingface-cli download lukbl/LaTeX-OCR --repo-type space --local-dir models
+```
+
+----------------------------------------
+
+TITLE: Serving BentoML Project Locally
+DESCRIPTION: This snippet shows the command to serve a BentoML project locally. Running 'bentoml serve' starts the BentoML service, making its API endpoints accessible, typically at 'http://localhost:3000'. Note that running this specific project locally requires an Nvidia GPU with at least 12G VRAM.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/examples/controlnet.rst#_snippet_12
+
+LANGUAGE: bash
+CODE:
+```
+bentoml serve
+```
+
+----------------------------------------
+
+TITLE: Verifying BentoML Service Functionality (Python)
+DESCRIPTION: This Python snippet provides a quick verification method for a BentoML Service. It initializes the `Summarization` service, loads the model, and invokes the `summarize` method with `EXAMPLE_INPUT`, printing the output. This is useful for interactive debugging and confirming basic service setup and functionality during development.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/build-with-bentoml/testing.rst#_snippet_1
+
+LANGUAGE: python
+CODE:
+```
+from service import Summarization, EXAMPLE_INPUT # Imported from the Summarization service.py file
+
+# Initialize the Service
+svc = Summarization()
+
+# Invoke the Service with example input and print the output
+output = svc.summarize(EXAMPLE_INPUT)
+print(output)
+```
+
+----------------------------------------
+
+TITLE: Configuring BentoML Service with bentofile.yaml
+DESCRIPTION: This YAML configuration file defines the BentoML service, specifying the entry point, labels for organization, files to include in the Bento, and required Python packages. It's essential for packaging the ML service correctly.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/tests/monitoring/task_classification/README.md#_snippet_9
+
+LANGUAGE: YAML
+CODE:
+```
+service: "service.py:svc"
+labels:
+  owner: bentoml-team
+  project: gallery
+include:
+- "*.py"
+python:
+  packages:
+    - scikit-learn
+    - pandas
+```
+
+----------------------------------------
+
+TITLE: Performing Sparse Checkout for BentoML gRPC Proto (Bash)
+DESCRIPTION: This sequence of commands performs a Git sparse checkout to selectively retrieve the src/bentoml/grpc directory from the bentoml/BentoML repository. This method is efficient for obtaining specific files like service.proto without cloning the entire monorepo, which is necessary for building BentoML gRPC clients.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/build-with-bentoml/snippets/grpc/additional_setup.rst#_snippet_1
+
+LANGUAGE: bash
+CODE:
+```
+mkdir bentoml && pushd bentoml
+git init
+git remote add -f origin https://github.com/bentoml/BentoML.git
+git config core.sparseCheckout true
+cat <<EOT >|.git/info/sparse-checkout
+src/bentoml/grpc
+EOT
+git pull origin main && mv src/bentoml/grpc .
+popd
+```
+
+----------------------------------------
+
+TITLE: Installing Dependencies and Logging into BentoCloud (Bash)
+DESCRIPTION: This snippet provides the bash commands to install the necessary Python packages (bentoml, mlflow, scikit-learn) using pip and then log into BentoCloud via the BentoML CLI, which is a prerequisite for deploying services to the cloud.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/examples/mlflow.rst#_snippet_9
+
+LANGUAGE: bash
+CODE:
+```
+pip install bentoml mlflow scikit-learn
+
+bentoml cloud login
+```
+
+----------------------------------------
+
+TITLE: Listing Available BentoML Services (Bash)
+DESCRIPTION: This command lists all Bentos that have been built and are available locally. Each Bento is identified by its unique version, allowing users to manage and reference their packaged AI services.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/get-started/packaging-for-deployment.rst#_snippet_2
+
+LANGUAGE: bash
+CODE:
+```
+bentoml list
+```
+
+----------------------------------------
+
+TITLE: Serving BentoML Project Locally (Bash)
+DESCRIPTION: This command starts the BentoML service locally, allowing for testing and validation of the code with local compute resources. An NVIDIA GPU with sufficient VRAM is required for LLM projects like this one.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/examples/function-calling.rst#_snippet_16
+
+LANGUAGE: bash
+CODE:
+```
+bentoml serve
+```
+
+----------------------------------------
+
+TITLE: Running BentoServer with BentoML CLI - Bash
+DESCRIPTION: This bash command starts the BentoML server using the `bentoml serve` CLI, pointing to the `svc` instance within the `hello.py` module. The `--reload` flag enables automatic server restarts on code changes during development.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/src/bentoml/_internal/server/README.md#_snippet_1
+
+LANGUAGE: bash
+CODE:
+```
+bentoml serve hello:svc --reload
+```
+
+----------------------------------------
+
+TITLE: Waiting for New BentoML Project Deployment Readiness (Python API)
+DESCRIPTION: This Python code extends the deployment creation by demonstrating how to wait for the deployment to become ready. After calling bentoml.deployment.create, the wait_until_ready method is invoked on the returned deployment object, with an optional timeout in seconds.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/scale-with-bentocloud/deployment/create-deployments.rst#_snippet_2
+
+LANGUAGE: python
+CODE:
+```
+import bentoml
+
+dep = bentoml.deployment.create(bento="./path_to_your_project", name = "my_deployment_name")
+
+dep.wait_until_ready(timeout=3600)
+```
+
+----------------------------------------
+
+TITLE: Installing PyTorch and TensorFlow with CUDA via pip (Bash)
+DESCRIPTION: This snippet provides bash commands for installing PyTorch and TensorFlow with their respective CUDA dependencies using `pip`. This approach ensures minimal package size and better compatibility by automatically installing the correct CUDA version alongside the frameworks. It's recommended for development environments.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/build-with-bentoml/gpu-inference.rst#_snippet_2
+
+LANGUAGE: bash
+CODE:
+```
+pip install torch
+pip install tensorflow[and-cuda]
+```
+
+----------------------------------------
+
+TITLE: Installing Pytest for Test Runner (Bash)
+DESCRIPTION: This snippet demonstrates how to install `pytest`, a popular test runner, using the `pip` package manager. It is a prerequisite for setting up and executing tests for BentoML Services, ensuring the testing environment is ready.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/build-with-bentoml/testing.rst#_snippet_0
+
+LANGUAGE: bash
+CODE:
+```
+pip install pytest
+```
+
+----------------------------------------
+
+TITLE: Setting Up Llama 3.1 for Local Serving
+DESCRIPTION: This snippet provides the bash commands to prepare the BentoVLLM Llama 3.1 project for local serving. It involves cloning the repository, navigating to the specific project directory, installing Python dependencies from `requirements.txt`, and exporting your Hugging Face token as an environment variable.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/examples/vllm.rst#_snippet_15
+
+LANGUAGE: bash
+CODE:
+```
+git clone https://github.com/bentoml/BentoVLLM.git
+cd BentoVLLM/llama3.1-8b-instruct
+
+# Recommend Python 3.11
+pip install -r requirements.txt
+export HF_TOKEN=<your-hf-token>
+```
+
+----------------------------------------
+
+TITLE: Installing Arize AI Plugin (Bash)
+DESCRIPTION: This command installs the `bentoml-plugins-arize` Python package, which is required to integrate Arize AI for data and model monitoring with BentoML services. It should be executed in the environment where the BentoML service is being developed or deployed.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/build-with-bentoml/observability/monitoring-and-data-collection.rst#_snippet_6
+
+LANGUAGE: bash
+CODE:
+```
+pip install bentoml-plugins-arize
+```
+
+----------------------------------------
+
+TITLE: Serving BentoML Service Locally
+DESCRIPTION: This command starts a BentoML service locally, making it accessible for testing and development. It allows users to validate their code and model functionality using local compute resources before deployment.
+
+SOURCE: https://github.com/bentoml/bentoml/blob/main/docs/source/examples/xgboost.rst#_snippet_18
+
+LANGUAGE: bash
+CODE:
+```
+bentoml serve
+```
